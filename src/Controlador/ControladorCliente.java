@@ -22,6 +22,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 
+import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -40,6 +41,8 @@ public class ControladorCliente implements Initializable {
 
     private ClienteNatural clientenaturalSeleccionado;
     private ClienteJuridico clienteJuridicaSeleccionado;
+
+    private Cliente clienteSeleccionado;
 
     @FXML
     private TextField txtNombreCliente;
@@ -64,21 +67,19 @@ public class ControladorCliente implements Initializable {
     @FXML
     private Button btnEliminarCliente;
     @FXML
-    private TableView columnNitCliente;
+    private TableColumn <?, ?>columnNombreCliente;
     @FXML
-    private TableColumn columnNombreCliente;
+    private TableColumn <?, ?>columnApellidoCliente;
     @FXML
-    private TableColumn columnApellidoCliente;
+    private TableColumn <?, ?>columnIdCliente;
     @FXML
-    private TableColumn columnIdCliente;
+    private TableColumn <?, ?>columnTelefonoCliente;
     @FXML
-    private TableColumn columnTelefonoCliente;
+    private TableColumn <?, ?>columnDireccionCliente;
     @FXML
-    private TableColumn columnDireccionCliente;
+    private TableColumn <?, ?>columnCorrreoCliente;
     @FXML
-    private TableColumn columnCorrreoCliente;
-    @FXML
-    private TableColumn columnFNacimientoCliente;
+    private TableColumn <?, ?>columnFNacimientoCliente;
     @FXML
     private Button btnActualizarCliente;
     @FXML
@@ -87,12 +88,48 @@ public class ControladorCliente implements Initializable {
     private RadioButton rdoClienteNatural;
     @FXML
     private RadioButton rdoClienteJuridico;
+    @FXML
+    private TableView tblCliente;
+    @FXML
+    private TableColumn columnNitCliente;
 
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
+        this.columnNombreCliente.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
+        this.columnApellidoCliente.setCellValueFactory(new PropertyValueFactory<>("Apellido"));
+        this.columnIdCliente.setCellValueFactory(new PropertyValueFactory<>("Indentificacion"));
+        this.columnDireccionCliente.setCellValueFactory(new PropertyValueFactory<>("Direccion"));
+        this.columnTelefonoCliente.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
+        this.columnNitCliente.setCellValueFactory(new PropertyValueFactory<>("Nit"));
+        tblCliente.setItems(listaClienteData);
+
+        tblCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+
+            clienteSeleccionado = (Cliente) newSelection;
+            mostrarInformacionCliente();
+
+        });
+
     }
+
+    private void mostrarInformacionCliente() {
+        if (clienteSeleccionado != null) {
+            txtNombreCliente.setText(clienteSeleccionado.getNombre());
+            txtApellidoCliente.setText(clienteSeleccionado.getApellidos());
+            txtIdCliente.setText(clienteSeleccionado.getId());
+            txtDireccionCliente.setText(clienteSeleccionado.getDireccion());
+            txtTelefonoCliente.setText(clienteSeleccionado.getTelefono());
+
+        }
+    }
+
 
     @FXML
     public void guardarCliente(ActionEvent actionEvent) {
@@ -267,5 +304,71 @@ public class ControladorCliente implements Initializable {
         alert.setContentText(contenido);
         alert.showAndWait();
 
+    }
+
+    public ObservableList<ClienteNatural> getListaClienteNaturalData() {
+        listaClienteNaturalData.addAll(Aplicacion.obtenerListaClientesNaturales());
+        return listaClienteNaturalData;
+    }
+
+    public void setListaClienteNaturalData(ObservableList<ClienteNatural> listaClienteNaturalData) {
+        this.listaClienteNaturalData = listaClienteNaturalData;
+    }
+
+    public ObservableList<ClienteJuridico> getListaClienteJuridicoData() {
+        listaClienteJuridicoData.addAll(Aplicacion.obtenerListaClientesJuridicos());
+        return listaClienteJuridicoData;
+    }
+
+    public void setListaClienteJuridicoData(ObservableList<ClienteJuridico> listaClienteJuridicoData) {
+        this.listaClienteJuridicoData = listaClienteJuridicoData;
+    }
+
+    public ObservableList<Cliente> getListaClienteData() {
+        return listaClienteData;
+    }
+
+    public void setListaClienteData(ObservableList<Cliente> listaClienteData) {
+        this.listaClienteData = listaClienteData;
+    }
+
+    public ObservableList<ProductoProcesado> getListaProductoProcesado() {
+        return listaProductoProcesado;
+    }
+
+    public void setListaProductoProcesado(ObservableList<ProductoProcesado> listaProductoProcesado) {
+        this.listaProductoProcesado = listaProductoProcesado;
+    }
+
+    public ObservableList<ProductoEnvasado> getListaProductoEnvasado() {
+        return listaProductoEnvasado;
+    }
+
+    public void setListaProductoEnvasado(ObservableList<ProductoEnvasado> listaProductoEnvasado) {
+        this.listaProductoEnvasado = listaProductoEnvasado;
+    }
+
+    public ObservableList<ProductoRefrigerado> getListaProductoRefrigerado() {
+        return listaProductoRefrigerado;
+    }
+
+    public void setListaProductoRefrigerado(ObservableList<ProductoRefrigerado> listaProductoRefrigerado) {
+        this.listaProductoRefrigerado = listaProductoRefrigerado;
+    }
+
+    public ObservableList<Producto> getListaProductoData() {
+        return listaProductoData;
+    }
+
+    public void setListaProductoData(ObservableList<Producto> listaProductoData) {
+        this.listaProductoData = listaProductoData;
+    }
+
+    public ObservableList<Producto> getProductosVendidos() {
+        return productosVendidos;
+    }
+
+    public void setProductosVendidos(ObservableList<Producto> productosVendidos) {
+        this.productosVendidos = productosVendidos;
     }
 }

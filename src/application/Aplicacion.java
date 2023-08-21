@@ -45,7 +45,7 @@ public class Aplicacion extends Application {
 
     // ----------------------------- CLIENTE NATURAL -------------------
 
-    public ArrayList<ClienteNatural> obtenerClientesNaturales() {
+    public static ArrayList<ClienteNatural> obtenerListaClientesNaturales() {
         return Almacen.getListaClientesNaturales();
     }
 
@@ -69,7 +69,7 @@ public class Aplicacion extends Application {
     }
 
     // ----------------------------- CLIENTE JURIDICO -------------------
-    public ArrayList<ClienteJuridico> obtenerListaCleienteJuridico() {
+    public static ArrayList<ClienteJuridico> obtenerListaClientesJuridicos() {
         return Almacen.getListaClientesJuridicos();
     }
 

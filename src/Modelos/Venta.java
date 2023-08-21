@@ -4,7 +4,7 @@ package Modelos;
  */
 import java.util.Date;
 
-public class Venta extends DetalleVenta {
+public class Venta {
 
     private int codigo;
 
@@ -18,8 +18,70 @@ public class Venta extends DetalleVenta {
 
     private float iva;
 
-    public Venta(int cantidadProductoV, float subTotal, String productoVendido, int codigo, Date fecha, String detallesDeVenta, Cliente cliente, float total, float iva) {
-        super(cantidadProductoV, subTotal, productoVendido);
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public Date getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(Date fecha) {
+        this.fecha = fecha;
+    }
+
+    public String getDetallesDeVenta() {
+        return detallesDeVenta;
+    }
+
+    public void setDetallesDeVenta(String detallesDeVenta) {
+        this.detallesDeVenta = detallesDeVenta;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
+    }
+
+    public float getIva() {
+        return iva;
+    }
+
+    public void setIva(float iva) {
+        this.iva = iva;
+    }
+
+    @Override
+    public String toString() {
+        return "Venta{" +
+                "codigo=" + codigo +
+                ", fecha=" + fecha +
+                ", detallesDeVenta='" + detallesDeVenta + '\'' +
+                ", cliente=" + cliente +
+                ", total=" + total +
+                ", iva=" + iva +
+                '}';
+    }
+
+    public Venta() {
+    }
+
+    public Venta(int codigo, Date fecha, String detallesDeVenta, Cliente cliente, float total, float iva) {
         this.codigo = codigo;
         this.fecha = fecha;
         this.detallesDeVenta = detallesDeVenta;

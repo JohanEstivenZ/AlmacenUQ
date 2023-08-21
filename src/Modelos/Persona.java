@@ -6,6 +6,38 @@ import java.util.Date;
 
 public class Persona {
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTelefono() {
+        return telefono;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
     private String nombre;
 
     private String apellidos;
@@ -13,6 +45,19 @@ public class Persona {
     private String id;
 
     private String telefono;
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", id='" + id + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
+    }
+
+    public Persona() {
+    }
 
     public Persona(String correo, Date fechaNacimiento, String nombre, String apellidos, String id, String telefono) {
         this.nombre = nombre;

@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="241.0" fitWidth="675.0" layoutX="22.0" layoutY="129.4" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="129.60000000000002" AnchorPane.topAnchor="129.4">
                <image>
-                  <Image url="@../../../../../Downloads/AlmacenUQ/src/Imagenes/Almacen%20(3).png" />
+                  <Image url="@../Imagenes/LOGO_2.png" />
                </image>
             </ImageView>
          </children>

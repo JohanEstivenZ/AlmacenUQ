@@ -1,5 +1,7 @@
 package Modelos;
-
+/*
+ * @author Juan José Restrepo Morales - Johan Estiven Zapata
+ */
 import java.util.Date;
 
 public class Venta extends DetalleVenta {

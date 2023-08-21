@@ -1,5 +1,7 @@
 package Modelos;
-
+/*
+ * @author Juan José Restrepo Morales - Johan Estiven Zapata
+ */
 public class DetalleVenta {
 
     private int cantidadProductoV;

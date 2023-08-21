@@ -1,4 +1,7 @@
 package application;
+/*
+ * @author Juan José Restrepo Morales - Johan Estiven Zapata
+ */
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

@@ -125,7 +125,7 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <DatePicker prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                  <DatePicker fx:id="dateFechaNacimiento" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                   <Label prefHeight="18.0" prefWidth="176.0" text="Nit" textFill="WHITE" GridPane.rowIndex="8">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />

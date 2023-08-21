@@ -69,8 +69,10 @@ public class ControladorCliente implements Initializable {
     private TableColumn columnFNacimientoCliente;
     @FXML
     private Button btnActualizarCliente;
+    @FXML
+    private DatePicker dateFechaNacimiento;
 
-    
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

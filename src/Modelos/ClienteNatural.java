@@ -8,6 +8,8 @@ public class ClienteNatural extends Cliente {
     public String correo;
 
     private Date fechaNacimiento;
+
+
     public String getCorreo() {
         return correo;
     }
@@ -35,8 +37,8 @@ public class ClienteNatural extends Cliente {
     public ClienteNatural() {
     }
 
-    public ClienteNatural(String nombre, String apellidos, String id, String telefono, String correo, Date fechaNacimiento) {
-        super(nombre, apellidos, id, telefono);
+    public ClienteNatural(String nombre, String apellidos, String id, String direccion, String telefono, String correo, Date fechaNacimiento) {
+        super(nombre, apellidos, id, direccion, telefono);
         this.correo = correo;
         this.fechaNacimiento = fechaNacimiento;
     }

@@ -30,6 +30,14 @@ public class Persona {
         this.id = id;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -43,8 +51,10 @@ public class Persona {
     private String apellidos;
 
     private String id;
+    private String direccion;
 
     private String telefono;
+
 
     @Override
     public String toString() {
@@ -52,6 +62,7 @@ public class Persona {
                 "nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", id='" + id + '\'' +
+                ", direccion='" + direccion + '\'' +
                 ", telefono='" + telefono + '\'' +
                 '}';
     }
@@ -59,10 +70,11 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String nombre, String apellidos, String id, String telefono) {
+    public Persona(String nombre, String apellidos, String id,String direccion, String telefono) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.id = id;
+        this.direccion = direccion;
         this.telefono = telefono;
     }
 }

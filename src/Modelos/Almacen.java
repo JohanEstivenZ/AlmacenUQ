@@ -7,7 +7,7 @@ import java.util.Date;
 
 public class Almacen {
 
-    private ArrayList<ClienteJudicial> listaClientesJudicial = new ArrayList<ClienteJudicial>();
+    private ArrayList<ClienteJuridico> listaClientesJuridicos = new ArrayList<ClienteJuridico>();
 
     private ArrayList<ClienteNatural> listaClientesNaturales = new ArrayList<ClienteNatural>();
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
@@ -22,8 +22,8 @@ public class Almacen {
     public Almacen() {
     }
 
-    public Almacen(ArrayList<ClienteJudicial> listaClientesJudicial, ArrayList<ClienteNatural> listaClientesNaturales, ArrayList<Cliente> listaClientes, ArrayList<ProductoEnvasado> listaProductosEnvasados, ArrayList<ProductoProcesado> listaProductosProcesados, ArrayList<ProductoRefrigerado> listaProductosRefrigerados, ArrayList<Producto> listaProductos, ArrayList<Venta> listaVentas) {
-        this.listaClientesJudicial = listaClientesJudicial;
+    public Almacen(ArrayList<ClienteJuridico> listaClientesJuridicos, ArrayList<ClienteNatural> listaClientesNaturales, ArrayList<Cliente> listaClientes, ArrayList<ProductoEnvasado> listaProductosEnvasados, ArrayList<ProductoProcesado> listaProductosProcesados, ArrayList<ProductoRefrigerado> listaProductosRefrigerados, ArrayList<Producto> listaProductos, ArrayList<Venta> listaVentas) {
+        this.listaClientesJuridicos = listaClientesJuridicos;
         this.listaClientesNaturales = listaClientesNaturales;
         this.listaClientes = listaClientes;
         this.listaProductosEnvasados = listaProductosEnvasados;
@@ -33,10 +33,10 @@ public class Almacen {
         this.listaVentas = listaVentas;
 
         // Datos quedamos personas
-        ClienteNatural cNatural = new ClienteNatural("Juan José", "Restrepo Morales", "1018224398", "3005772768", "juanj.restrepom@uqvirtual.edu.co",new Date(2004, 7, 4));
+        ClienteNatural cNatural = new ClienteNatural("Juan José", "Restrepo Morales", "1018224398","Calle 101 D #82-19", "3005772768", "juanj.restrepom@uqvirtual.edu.co",new Date(2004, 7, 4));
         listaClientes.add(cNatural);
-        ClienteJudicial cJudicial = new ClienteJudicial("Johan Estiven", "Zapata", "1015265458", "3183137658", "126.82003.50-0");
-        listaClientes.add(cJudicial);
+        ClienteJuridico cJuridico = new ClienteJuridico("Johan Estiven", "Zapata", "1015265458","Carrera 16 bis # 11-02 Piso 1","3183137658", "126.82003.50-0");
+        listaClientes.add(cJuridico);
 
 
         // Datos quemados productos
@@ -49,12 +49,12 @@ public class Almacen {
         listaProductos.add(prodRefrig);
     }
 
-    public ArrayList<ClienteJudicial> getListaClientesJudicial() {
-        return listaClientesJudicial;
+    public ArrayList<ClienteJuridico> getListaClientesJuridicos() {
+        return listaClientesJuridicos;
     }
 
-    public void setListaClientesJudicial(ArrayList<ClienteJudicial> listaClientesJudicial) {
-        this.listaClientesJudicial = listaClientesJudicial;
+    public void setListaClientesJuridicos(ArrayList<ClienteJuridico> listaClientesJuridicos) {
+        this.listaClientesJuridicos = listaClientesJuridicos;
     }
 
     public ArrayList<ClienteNatural> getListaClientesNaturales() {
@@ -111,5 +111,132 @@ public class Almacen {
 
     public void setListaVentas(ArrayList<Venta> listaVentas) {
         this.listaVentas = listaVentas;
+    }
+
+    // ------------------------PERSONA NATURAL-----------------------------
+    public ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
+                                        String telefono, String correo, Date fechaNacimeinto) {
+
+        ClienteNatural cNatural = null;
+
+        cNatural = obtenerClienteNatural(identificacion);
+        if (cNatural == null) {
+
+            cNatural = new ClienteNatural(nombre, apellido, identificacion, direccion, telefono, correo, fechaNacimeinto);
+            getListaClientesNaturales().add(cNatural);
+            return cNatural;
+        } else {
+            return null;
+        }
+
+    }
+
+    public ClienteNatural obtenerClienteNatural(String id) {
+        for (ClienteNatural cNatural : listaClientesNaturales) {
+            if (cNatural.getId().equalsIgnoreCase(id)) {
+                return cNatural;
+            }
+        }
+        return null;
+    }
+
+    public boolean actualizarClienteNatural(String idActual, String nombre, String apellido, String id,
+                                      String direccion, String telefono, String correo, Date fechaNacimiento) {
+
+        ClienteNatural cNatural = null;
+        cNatural = obtenerClienteNatural(idActual);
+
+        if (cNatural != null) {
+
+            cNatural.setNombre(nombre);
+            cNatural.setApellidos(apellido);
+            cNatural.setId(id);
+            cNatural.setDireccion(direccion);
+            cNatural.setTelefono(telefono);
+            cNatural.setCorreo(direccion);
+            cNatural.setFechaNacimiento(fechaNacimiento);
+            getListaClientesNaturales().add(cNatural);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean eliminarClienteNatural(String id) {
+        ClienteNatural cNatural = null;
+
+        cNatural = obtenerClienteNatural(id);
+        if (cNatural != null) {
+            getListaClientesNaturales().remove(cNatural);
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    // ------------------------------PERSONA JURIDICA------------------------
+    public ClienteJuridico crearClienteJuridica(String nombre, String apellido, String id,
+                                          String direccion, String telefono, String nit) {
+
+        ClienteJuridico cJuridico = null;
+
+        cJuridico = obtenerClienteJuridico(nit);
+        if (cJuridico == null) {
+
+            cJuridico = new ClienteJuridico(nombre, apellido,id, direccion, telefono, nit );
+            cJuridico.setNit(nit);
+            cJuridico.setNit(nit);
+            getListaClientesJuridicos().add(cJuridico);
+            return cJuridico;
+        } else {
+            return null;
+        }
+
+    }
+
+    public ClienteJuridico obtenerClienteJuridico(String nit) {
+        for (ClienteJuridico cJuridico : listaClientesJuridicos) {
+            if (cJuridico.getNit().equalsIgnoreCase(nit)) {
+                return cJuridico;
+            }
+        }
+        return null;
+    }
+
+    public boolean actualizarClienteJuridica(String idActualNit, String nombre, String apellido, String id, String nit,
+                                             String direccion, String telefono) {
+
+        ClienteJuridico cJuridico = null;
+        cJuridico = obtenerClienteJuridico(idActualNit);
+
+        if (cJuridico != null) {
+
+            cJuridico.setNombre(nombre);
+            cJuridico.setApellidos(apellido);
+            cJuridico.setId(id);
+            cJuridico.setNit(nit);
+            cJuridico.setDireccion(direccion);
+            cJuridico.setTelefono(telefono);
+            getListaClientesJuridicos().add(cJuridico);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean eliminarClienteJuridica(String nit) {
+        ClienteJuridico cJuridico = null;
+
+        cJuridico = obtenerClienteJuridico(nit);
+        if (cJuridico != null) {
+            getListaClientesJuridicos().remove(cJuridico);
+            return true;
+
+        } else {
+            return false;
+        }
     }
 }

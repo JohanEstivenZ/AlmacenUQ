@@ -70,6 +70,7 @@ public class ControladorCliente implements Initializable {
     @FXML
     private Button btnActualizarCliente;
 
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

@@ -4,19 +4,21 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane prefHeight="361.0" prefWidth="800.0" style="-fx-background-color: #ffb340;">
+      <AnchorPane prefHeight="361.0" prefWidth="800.0" style="-fx-background-color: #ffb340;" AnchorPane.bottomAnchor="138.39999999999998" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fitHeight="285.0" fitWidth="630.0" layoutX="147.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="285.0" fitWidth="630.0" layoutX="147.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="23.600000000000023" AnchorPane.leftAnchor="147.0" AnchorPane.rightAnchor="146.33334350585938" AnchorPane.topAnchor="53.0">
                <image>
                   <Image url="@../Imagenes/LOGO.png" />
                </image>
             </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutX="355.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.leftAnchor="354.8" AnchorPane.rightAnchor="354.8" AnchorPane.topAnchor="378.0">
+      <Button layoutX="354.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="355.6" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +26,12 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="378.0">
+      <Text fill="#ffb340" layoutX="355.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Venta" textAlignment="CENTER" wrappingWidth="90.39999999999986">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="664.6" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,7 +39,12 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="378.0">
+      <Text fill="#ffb340" layoutX="664.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Producto" textAlignment="CENTER" wrappingWidth="90.39999999999986">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Text>
+      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="664.6" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -41,5 +53,10 @@
             </ImageView>
          </graphic>
       </Button>
+      <Text fill="#ffb340" layoutX="45.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cliente" textAlignment="CENTER" wrappingWidth="90.39999999999986">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

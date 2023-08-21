@@ -2,6 +2,7 @@ package Modelos;
 /*
  * @author Juan José Restrepo Morales - Johan Estiven Zapata
  */
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -241,4 +242,195 @@ public class Almacen {
             return false;
         }
     }
+
+
+    // ------------------------------ PRODUCTO ENVASADO ------------------------
+
+    public ProductoEnvasado obtenerProductoEnvasado(String codigo) {
+        for (ProductoEnvasado proEnva : listaProductosEnvasados) {
+            if (proEnva.getCodigo().equalsIgnoreCase(codigo)) {
+                return proEnva;
+            }
+        }
+        return null;
+    }
+
+    public ProductoEnvasado crearProductoEnvasado(String codigo, String nombre, double valorUnitario,
+                                                  int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                                  Pais paisOrigen) {
+
+        ProductoEnvasado proEnva = null;
+
+        proEnva = obtenerProductoEnvasado(codigo);
+        if (proEnva == null) {
+
+            proEnva = new ProductoEnvasado(codigo, nombre, valorUnitario, cantidadExistencia, fechaEnvasado, pesoEnvase, paisOrigen);
+            getListaProductosEnvasados().add(proEnva);
+            return proEnva;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean actualizarProductoEnvasado(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                              int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                              Pais paisOrigen) {
+
+        ProductoEnvasado proEnva = null;
+
+        proEnva = obtenerProductoEnvasado(codigo);
+        if (proEnva != null) {
+
+            proEnva.setCodigo(codigoNuev);
+            proEnva.setNombre(nombre);
+            proEnva.setValorUnitario(valorUnitario);
+            proEnva.setCantidadExistencia(cantidadExistencia);
+            proEnva.setPesoEnvase(pesoEnvase);
+            proEnva.setFechaEnvasado(fechaEnvasado);
+            proEnva.setPaisOrigen(paisOrigen);
+            getListaProductosEnvasados().add(proEnva);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean eliminarProductoEnvasado(String codigo) {
+
+        ProductoEnvasado proEnva = null;
+
+        proEnva = obtenerProductoEnvasado(codigo);
+        if (proEnva != null) {
+            getListaProductosEnvasados().remove(proEnva);
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    // ------------------------------ PRODUCTO PROCESADO ------------------------
+    public ProductoProcesado obtenerProductoProcesado(String codigo) {
+        for (ProductoProcesado proProcs : listaProductosProcesados) {
+            if (proProcs.getCodigo().equalsIgnoreCase(codigo)) {
+                return proProcs;
+            }
+        }
+        return null;
+    }
+
+    public ProductoProcesado crearProductoProcesado(String codigo, String nombre,
+                                                    double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
+
+        ProductoProcesado ProProcs = null;
+
+        ProProcs = obtenerProductoProcesado(codigo);
+        if (ProProcs == null) {
+
+            ProProcs = new ProductoProcesado( codigo,  nombre,  valorUnitario,  cantidadExistencia, fechaVencimiento);
+            getListaProductosProcesados().add(ProProcs);
+            return ProProcs;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean actualizarProductoPerecedero(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                                int cantidadExistencia, Date fechaVencimiento) {
+
+        ProductoProcesado ProProcs = null;
+        ProProcs = obtenerProductoProcesado(codigo);
+        if (ProProcs != null) {
+
+            ProProcs.setCodigo(codigoNuev);
+            ProProcs.setNombre(nombre);
+            ProProcs.setValorUnitario(valorUnitario);
+            ProProcs.setCantidadExistencia(cantidadExistencia);
+            ProProcs.setFechaVencimiento(fechaVencimiento);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean eliminarProductoProcesado(String codigo) {
+
+        ProductoProcesado ProProcs = null;
+
+        ProProcs = obtenerProductoProcesado(codigo);
+        if (ProProcs != null) {
+            getListaProductosProcesados().remove(ProProcs);
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
+    // ------------------------------ PRODUCTO REFRIGERADO ------------------------
+
+    public ProductoRefrigerado obtenerProductoRefrigerado(String codigo) {
+        for (ProductoRefrigerado proRefri : listaProductosRefrigerados) {
+            if (proRefri.getCodigo().equalsIgnoreCase(codigo)) {
+                return proRefri;
+            }
+        }
+        return null;
+    }
+
+    public ProductoRefrigerado crearProductoRefrigerado(String codigo, String nombre, double valorUnitario,
+                                                        int cantidadExistencia, int codigoAprobacion,
+                                                        float temperaturaRefrigeracion) {
+
+        ProductoRefrigerado proRefri = null;
+
+        proRefri = obtenerProductoRefrigerado(codigo);
+        if (proRefri == null) {
+
+            proRefri = new ProductoRefrigerado(codigo, nombre, valorUnitario, cantidadExistencia, codigoAprobacion, temperaturaRefrigeracion);
+            getListaProductosRefrigerados().add(proRefri);
+            return proRefri;
+        } else {
+            return null;
+        }
+    }
+
+    public boolean actualizarProductosRegrigerados(String codigoNuev,String codigo, String nombre,
+                                                   double valorUnitario, int cantidadExistencia,
+                                                   int codigoAprobacion, float temperaturaRefrigeracion) {
+
+        ProductoRefrigerado proRefri = null;
+
+        proRefri = obtenerProductoRefrigerado(codigo);
+        if (proRefri != null) {
+
+            proRefri.setCodigo(codigoNuev);
+            proRefri.setNombre(nombre);
+            proRefri.setValorUnitario(valorUnitario);
+            proRefri.setCantidadExistencia(cantidadExistencia);
+            proRefri.setCodigoAprobacion(codigoAprobacion);
+            proRefri.setTemperaturaRefrigeracion(temperaturaRefrigeracion);
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    public boolean eliminarProductoRefrigerado(String codigo) {
+
+        ProductoRefrigerado proRefri = null;
+
+        proRefri = obtenerProductoRefrigerado(codigo);
+        if (proRefri != null) {
+            getListaProductosRefrigerados().remove(proRefri);
+            return true;
+
+        } else {
+            return false;
+        }
+    }
+
 }

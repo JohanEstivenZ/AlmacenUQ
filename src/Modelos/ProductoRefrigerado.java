@@ -6,7 +6,7 @@ public class ProductoRefrigerado extends Producto {
 
     private int codigoAprobacion;
 
-    private float temperaturaRefigeracion;
+    private float temperaturaRefrigeracion;
 
     public int getCodigoAprobacion() {
         return codigoAprobacion;
@@ -17,27 +17,27 @@ public class ProductoRefrigerado extends Producto {
     }
 
     public float getTemperaturaRefigeracion() {
-        return temperaturaRefigeracion;
+        return temperaturaRefrigeracion;
     }
 
-    public void setTemperaturaRefigeracion(float temperaturaRefigeracion) {
-        this.temperaturaRefigeracion = temperaturaRefigeracion;
+    public void setTemperaturaRefrigeracion(float temperaturaRefrigeracion) {
+        this.temperaturaRefrigeracion = temperaturaRefrigeracion;
     }
 
     @Override
     public String toString() {
         return "ProductoRefigerado{" +
                 "codigoAprobacion=" + codigoAprobacion +
-                ", temperaturaRefigeracion=" + temperaturaRefigeracion +
+                ", temperaturaRefigeracion=" + temperaturaRefrigeracion +
                 '}';
     }
 
     public ProductoRefrigerado() {
     }
 
-    public ProductoRefrigerado(String codigo, String nombre, double valorUnitario, int cantidadExistencia, int codigoAprobacion, float temperaturaRefigeracion) {
+    public ProductoRefrigerado(String codigo, String nombre, double valorUnitario, int cantidadExistencia, int codigoAprobacion, float temperaturaRefrigeracion) {
         super(codigo, nombre, valorUnitario, cantidadExistencia);
         this.codigoAprobacion = codigoAprobacion;
-        this.temperaturaRefigeracion = temperaturaRefigeracion;
+        this.temperaturaRefrigeracion = temperaturaRefrigeracion;
     }
 }

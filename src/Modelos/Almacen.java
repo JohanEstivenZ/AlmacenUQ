@@ -22,7 +22,7 @@ public class Almacen {
 
     public Almacen() {
     }
-
+    
     public Almacen(ArrayList<ClienteJuridico> listaClientesJuridicos, ArrayList<ClienteNatural> listaClientesNaturales, ArrayList<Cliente> listaClientes, ArrayList<ProductoEnvasado> listaProductosEnvasados, ArrayList<ProductoProcesado> listaProductosProcesados, ArrayList<ProductoRefrigerado> listaProductosRefrigerados, ArrayList<Producto> listaProductos, ArrayList<Venta> listaVentas) {
         this.listaClientesJuridicos = listaClientesJuridicos;
         this.listaClientesNaturales = listaClientesNaturales;

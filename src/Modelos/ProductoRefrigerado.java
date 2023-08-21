@@ -16,7 +16,7 @@ public class ProductoRefrigerado extends Producto {
         this.codigoAprobacion = codigoAprobacion;
     }
 
-    public float getTemperaturaRefigeracion() {
+    public float getTemperaturaRefrigeracion() {
         return temperaturaRefrigeracion;
     }
 

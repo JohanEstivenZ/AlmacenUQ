@@ -18,7 +18,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutX="354.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="355.6" AnchorPane.topAnchor="378.0">
+      <Button layoutX="354.0" layoutY="378.0" mnemonicParsing="false" onAction="#abrirVentanaVenta" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="354.0" AnchorPane.rightAnchor="355.6" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,7 +31,7 @@
             <Font name="Consolas" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="664.6" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="378.0">
+      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" onAction="#abrirVentanaProducto" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="664.6" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -44,7 +44,7 @@
             <Font name="Consolas" size="12.0" />
          </font>
       </Text>
-      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="664.6" AnchorPane.topAnchor="378.0">
+      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" onAction="#abrirVentanaCliente" prefHeight="80.0" prefWidth="90.0" AnchorPane.bottomAnchor="42.0" AnchorPane.leftAnchor="45.0" AnchorPane.rightAnchor="664.6" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>

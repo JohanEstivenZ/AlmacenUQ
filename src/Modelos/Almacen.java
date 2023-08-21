@@ -8,14 +8,14 @@ import java.util.Date;
 
 public class Almacen {
 
-    private ArrayList<ClienteJuridico> listaClientesJuridicos = new ArrayList<ClienteJuridico>();
+    private static ArrayList<ClienteJuridico> listaClientesJuridicos = new ArrayList<ClienteJuridico>();
 
-    private ArrayList<ClienteNatural> listaClientesNaturales = new ArrayList<ClienteNatural>();
+    private static ArrayList<ClienteNatural> listaClientesNaturales = new ArrayList<ClienteNatural>();
     private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 
-    private ArrayList<ProductoEnvasado> listaProductosEnvasados = new ArrayList<ProductoEnvasado>();
-    private ArrayList<ProductoProcesado> listaProductosProcesados = new ArrayList<ProductoProcesado>();
-    private ArrayList<ProductoRefrigerado> listaProductosRefrigerados =  new ArrayList<ProductoRefrigerado>();
+    private static ArrayList<ProductoEnvasado> listaProductosEnvasados = new ArrayList<ProductoEnvasado>();
+    private static ArrayList<ProductoProcesado> listaProductosProcesados = new ArrayList<ProductoProcesado>();
+    private static ArrayList<ProductoRefrigerado> listaProductosRefrigerados =  new ArrayList<ProductoRefrigerado>();
     private ArrayList<Producto> listaProductos =  new ArrayList<Producto>();
 
     private  ArrayList<Venta> listaVentas = new ArrayList<Venta>();
@@ -50,7 +50,7 @@ public class Almacen {
         listaProductos.add(prodRefrig);
     }
 
-    public ArrayList<ClienteJuridico> getListaClientesJuridicos() {
+    public static ArrayList<ClienteJuridico> getListaClientesJuridicos() {
         return listaClientesJuridicos;
     }
 
@@ -58,7 +58,7 @@ public class Almacen {
         this.listaClientesJuridicos = listaClientesJuridicos;
     }
 
-    public ArrayList<ClienteNatural> getListaClientesNaturales() {
+    public static ArrayList<ClienteNatural> getListaClientesNaturales() {
         return listaClientesNaturales;
     }
 
@@ -74,7 +74,7 @@ public class Almacen {
         this.listaClientes = listaClientes;
     }
 
-    public ArrayList<ProductoEnvasado> getListaProductosEnvasados() {
+    public static ArrayList<ProductoEnvasado> getListaProductosEnvasados() {
         return listaProductosEnvasados;
     }
 
@@ -82,7 +82,7 @@ public class Almacen {
         this.listaProductosEnvasados = listaProductosEnvasados;
     }
 
-    public ArrayList<ProductoProcesado> getListaProductosProcesados() {
+    public static ArrayList<ProductoProcesado> getListaProductosProcesados() {
         return listaProductosProcesados;
     }
 
@@ -90,7 +90,7 @@ public class Almacen {
         this.listaProductosProcesados = listaProductosProcesados;
     }
 
-    public ArrayList<ProductoRefrigerado> getListaProductosRefrigerados() {
+    public static ArrayList<ProductoRefrigerado> getListaProductosRefrigerados() {
         return listaProductosRefrigerados;
     }
 
@@ -116,8 +116,8 @@ public class Almacen {
 
 
     // ------------------------ CLIENTE NATURAL -----------------------------
-    public ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
-                                        String telefono, String correo, Date fechaNacimeinto) {
+    public static ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
+                                                     String telefono, String correo, Date fechaNacimeinto) {
 
         ClienteNatural cNatural = null;
 
@@ -133,7 +133,7 @@ public class Almacen {
 
     }
 
-    public ClienteNatural obtenerClienteNatural(String id) {
+    public static ClienteNatural obtenerClienteNatural(String id) {
         for (ClienteNatural cNatural : listaClientesNaturales) {
             if (cNatural.getId().equalsIgnoreCase(id)) {
                 return cNatural;
@@ -142,8 +142,8 @@ public class Almacen {
         return null;
     }
 
-    public boolean actualizarClienteNatural(String idActual, String nombre, String apellido, String id,
-                                      String direccion, String telefono, String correo, Date fechaNacimiento) {
+    public static boolean actualizarClienteNatural(String idActual, String nombre, String apellido, String id,
+                                                   String direccion, String telefono, String correo, Date fechaNacimiento) {
 
         ClienteNatural cNatural = null;
         cNatural = obtenerClienteNatural(idActual);
@@ -165,7 +165,7 @@ public class Almacen {
 
     }
 
-    public boolean eliminarClienteNatural(String id) {
+    public static boolean eliminarClienteNatural(String id) {
         ClienteNatural cNatural = null;
 
         cNatural = obtenerClienteNatural(id);
@@ -180,8 +180,8 @@ public class Almacen {
 
 
     // ------------------------------ CLIENTE JURIDICO ------------------------
-    public ClienteJuridico crearClienteJuridica(String nombre, String apellido, String id,
-                                          String direccion, String telefono, String nit) {
+    public static ClienteJuridico crearClienteJuridico(String nombre, String apellido, String id,
+                                                       String direccion, String telefono, String nit) {
 
         ClienteJuridico cJuridico = null;
 
@@ -199,7 +199,7 @@ public class Almacen {
 
     }
 
-    public ClienteJuridico obtenerClienteJuridico(String nit) {
+    public static ClienteJuridico obtenerClienteJuridico(String nit) {
         for (ClienteJuridico cJuridico : listaClientesJuridicos) {
             if (cJuridico.getNit().equalsIgnoreCase(nit)) {
                 return cJuridico;
@@ -208,8 +208,8 @@ public class Almacen {
         return null;
     }
 
-    public boolean actualizarClienteJuridica(String idActualNit, String nombre, String apellido, String id, String nit,
-                                             String direccion, String telefono) {
+    public static boolean actualizarClienteJuridico(String idActualNit, String nombre, String apellido, String id, String nit,
+                                                    String direccion, String telefono) {
 
         ClienteJuridico cJuridico = null;
         cJuridico = obtenerClienteJuridico(idActualNit);
@@ -230,7 +230,7 @@ public class Almacen {
 
     }
 
-    public boolean eliminarClienteJuridica(String nit) {
+    public static boolean eliminarClienteJuridico(String nit) {
         ClienteJuridico cJuridico = null;
 
         cJuridico = obtenerClienteJuridico(nit);
@@ -246,7 +246,7 @@ public class Almacen {
 
     // ------------------------------ PRODUCTO ENVASADO ------------------------
 
-    public ProductoEnvasado obtenerProductoEnvasado(String codigo) {
+    public static ProductoEnvasado obtenerProductoEnvasado(String codigo) {
         for (ProductoEnvasado proEnva : listaProductosEnvasados) {
             if (proEnva.getCodigo().equalsIgnoreCase(codigo)) {
                 return proEnva;
@@ -255,9 +255,9 @@ public class Almacen {
         return null;
     }
 
-    public ProductoEnvasado crearProductoEnvasado(String codigo, String nombre, double valorUnitario,
-                                                  int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
-                                                  Pais paisOrigen) {
+    public static ProductoEnvasado crearProductoEnvasado(String codigo, String nombre, double valorUnitario,
+                                                         int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                                         Pais paisOrigen) {
 
         ProductoEnvasado proEnva = null;
 
@@ -272,9 +272,9 @@ public class Almacen {
         }
     }
 
-    public boolean actualizarProductoEnvasado(String codigoNuev, String codigo, String nombre, double valorUnitario,
-                                              int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
-                                              Pais paisOrigen) {
+    public static boolean actualizarProductoEnvasado(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                                     int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                                     Pais paisOrigen) {
 
         ProductoEnvasado proEnva = null;
 
@@ -296,7 +296,7 @@ public class Almacen {
 
     }
 
-    public boolean eliminarProductoEnvasado(String codigo) {
+    public static boolean eliminarProductoEnvasado(String codigo) {
 
         ProductoEnvasado proEnva = null;
 
@@ -312,7 +312,7 @@ public class Almacen {
 
     // ------------------------------ PRODUCTO PROCESADO ------------------------
 
-    public ProductoProcesado obtenerProductoProcesado(String codigo) {
+    public static ProductoProcesado obtenerProductoProcesado(String codigo) {
         for (ProductoProcesado proProcs : listaProductosProcesados) {
             if (proProcs.getCodigo().equalsIgnoreCase(codigo)) {
                 return proProcs;
@@ -321,8 +321,8 @@ public class Almacen {
         return null;
     }
 
-    public ProductoProcesado crearProductoProcesado(String codigo, String nombre,
-                                                    double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
+    public static ProductoProcesado crearProductoProcesado(String codigo, String nombre,
+                                                           double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
 
         ProductoProcesado ProProcs = null;
 
@@ -337,8 +337,8 @@ public class Almacen {
         }
     }
 
-    public boolean actualizarProductoPerecedero(String codigoNuev, String codigo, String nombre, double valorUnitario,
-                                                int cantidadExistencia, Date fechaVencimiento) {
+    public static boolean actualizarProductoProcesado(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                                      int cantidadExistencia, Date fechaVencimiento) {
 
         ProductoProcesado ProProcs = null;
         ProProcs = obtenerProductoProcesado(codigo);
@@ -356,7 +356,7 @@ public class Almacen {
 
     }
 
-    public boolean eliminarProductoProcesado(String codigo) {
+    public static boolean eliminarProductoProcesado(String codigo) {
 
         ProductoProcesado ProProcs = null;
 
@@ -372,7 +372,7 @@ public class Almacen {
 
     // ------------------------------ PRODUCTO REFRIGERADO ------------------------
 
-    public ProductoRefrigerado obtenerProductoRefrigerado(String codigo) {
+    public static ProductoRefrigerado obtenerProductoRefrigerado(String codigo) {
         for (ProductoRefrigerado proRefri : listaProductosRefrigerados) {
             if (proRefri.getCodigo().equalsIgnoreCase(codigo)) {
                 return proRefri;
@@ -381,9 +381,9 @@ public class Almacen {
         return null;
     }
 
-    public ProductoRefrigerado crearProductoRefrigerado(String codigo, String nombre, double valorUnitario,
-                                                        int cantidadExistencia, int codigoAprobacion,
-                                                        float temperaturaRefrigeracion) {
+    public static ProductoRefrigerado crearProductoRefrigerado(String codigo, String nombre, double valorUnitario,
+                                                               int cantidadExistencia, int codigoAprobacion,
+                                                               float temperaturaRefrigeracion) {
 
         ProductoRefrigerado proRefri = null;
 
@@ -398,9 +398,9 @@ public class Almacen {
         }
     }
 
-    public boolean actualizarProductosRegrigerados(String codigoNuev,String codigo, String nombre,
-                                                   double valorUnitario, int cantidadExistencia,
-                                                   int codigoAprobacion, float temperaturaRefrigeracion) {
+    public static boolean actualizarProductosRegrigerados(String codigoNuev, String codigo, String nombre,
+                                                          double valorUnitario, int cantidadExistencia,
+                                                          int codigoAprobacion, float temperaturaRefrigeracion) {
 
         ProductoRefrigerado proRefri = null;
 
@@ -420,7 +420,7 @@ public class Almacen {
 
     }
 
-    public boolean eliminarProductoRefrigerado(String codigo) {
+    public static boolean eliminarProductoRefrigerado(String codigo) {
 
         ProductoRefrigerado proRefri = null;
 

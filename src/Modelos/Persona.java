@@ -6,6 +6,34 @@ import java.util.Date;
 
 public class Persona {
 
+
+    private String nombre;
+
+    private String apellidos;
+
+    private String id;
+
+    private String telefono;
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", id='" + id + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
+    }
+
+    public Persona() {
+    }
+
+    public Persona(String correo, Date fechaNacimiento, String nombre, String apellidos, String id, String telefono) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.id = id;
+        this.telefono = telefono;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -38,31 +66,4 @@ public class Persona {
         this.telefono = telefono;
     }
 
-    private String nombre;
-
-    private String apellidos;
-
-    private String id;
-
-    private String telefono;
-
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", id='" + id + '\'' +
-                ", telefono='" + telefono + '\'' +
-                '}';
-    }
-
-    public Persona() {
-    }
-
-    public Persona(String correo, Date fechaNacimiento, String nombre, String apellidos, String id, String telefono) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.id = id;
-        this.telefono = telefono;
-    }
 }

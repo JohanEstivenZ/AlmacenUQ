@@ -16,7 +16,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <Button layoutX="355.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0">
+      <Button layoutX="355.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.leftAnchor="354.8" AnchorPane.rightAnchor="354.8" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -24,7 +24,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0">
+      <Button layoutX="664.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.rightAnchor="45.0" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -32,7 +32,7 @@
                </image>
             </ImageView>
          </graphic></Button>
-      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.leftAnchor="45.0">
+      <Button layoutX="45.0" layoutY="378.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="90.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="378.0">
          <graphic>
             <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
                <image>

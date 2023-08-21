@@ -17,14 +17,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vistas.Cliente">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="282.0" style="-fx-background-color: #ffb340;">
          <children>
             <ImageView fitHeight="241.0" fitWidth="675.0" layoutX="22.0" layoutY="129.4" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="129.60000000000002" AnchorPane.topAnchor="129.4">
                <image>
-                  <Image url="@../../../../../Downloads/Almacen%20(3).png" />
+                  <Image url="@../../../../../Downloads/AlmacenUQ/src/Imagenes/Almacen%20(3).png" />
                </image>
             </ImageView>
          </children>

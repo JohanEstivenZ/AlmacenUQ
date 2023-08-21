@@ -113,7 +113,8 @@ public class Almacen {
         this.listaVentas = listaVentas;
     }
 
-    // ------------------------PERSONA NATURAL-----------------------------
+
+    // ------------------------ CLIENTE NATURAL -----------------------------
     public ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
                                         String telefono, String correo, Date fechaNacimeinto) {
 
@@ -176,7 +177,8 @@ public class Almacen {
         }
     }
 
-    // ------------------------------PERSONA JURIDICA------------------------
+
+    // ------------------------------ CLIENTE JURIDICO ------------------------
     public ClienteJuridico crearClienteJuridica(String nombre, String apellido, String id,
                                           String direccion, String telefono, String nit) {
 

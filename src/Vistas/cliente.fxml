@@ -143,7 +143,7 @@
                   </Label>
                   <HBox prefHeight="26.0" prefWidth="186.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                      <children>
-                        <RadioButton fx:id="RdoClienteNatural" mnemonicParsing="false" text="Natural" textFill="WHITE">
+                        <RadioButton fx:id="rdoClienteNatural" mnemonicParsing="false" text="Natural" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
@@ -151,7 +151,7 @@
                               <Insets right="70.0" top="5.0" />
                            </HBox.margin>
                         </RadioButton>
-                        <RadioButton fx:id="RdoClienteJuridico" mnemonicParsing="false" text="Juridica" textFill="WHITE">
+                        <RadioButton fx:id="rdoClienteJuridico" mnemonicParsing="false" text="Juridica" textFill="WHITE">
                            <font>
                               <Font name="Arial Rounded MT Bold" size="13.0" />
                            </font>
@@ -180,26 +180,26 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="btnGuardarCliente" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Guardar">
+                  <Button fx:id="btnGuardarCliente" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="26.0" prefWidth="83.0" text="Guardar">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="btnLimpiarCliente" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Limpiar" GridPane.rowIndex="1">
+                  <Button fx:id="btnLimpiarCliente" mnemonicParsing="false" onAction="#limpiarCliente" prefHeight="26.0" prefWidth="83.0" text="Limpiar" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="btnSalirCliente" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Salir" GridPane.rowIndex="2">
+                  <Button fx:id="btnSalirCliente" mnemonicParsing="false" onAction="#salir" prefHeight="26.0" prefWidth="83.0" text="Salir" GridPane.rowIndex="2">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font></Button>
-                  <Button fx:id="btnActualizarCliente" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Actualizar" GridPane.rowIndex="3">
+                  <Button fx:id="btnActualizarCliente" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="26.0" prefWidth="83.0" text="Actualizar" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font></Button>
 
                </children>
             </GridPane>
-            <Button fx:id="btnEliminarCliente" layoutX="972.0" layoutY="382.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Eliminar">
+            <Button fx:id="btnEliminarCliente" layoutX="972.0" layoutY="382.0" mnemonicParsing="false" onAction="#eliminarCliente" prefHeight="26.0" prefWidth="83.0" text="Eliminar">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>

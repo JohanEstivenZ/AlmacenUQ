@@ -311,6 +311,7 @@ public class Almacen {
     }
 
     // ------------------------------ PRODUCTO PROCESADO ------------------------
+
     public ProductoProcesado obtenerProductoProcesado(String codigo) {
         for (ProductoProcesado proProcs : listaProductosProcesados) {
             if (proProcs.getCodigo().equalsIgnoreCase(codigo)) {

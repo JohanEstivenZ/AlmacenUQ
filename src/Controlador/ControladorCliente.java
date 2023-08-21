@@ -40,8 +40,6 @@ public class ControladorCliente implements Initializable {
     @FXML
     private TextField txtNitCliente;
     @FXML
-    private TableView<Persona> tblCliente;
-    @FXML
     private RadioButton RdoClienteJuridico;
     @FXML
     private RadioButton RdoClienteNatural;
@@ -53,6 +51,24 @@ public class ControladorCliente implements Initializable {
     private Button btnSalirCliente;
     @FXML
     private Button btnEliminarCliente;
+    @FXML
+    private TableView columnNitCliente;
+    @FXML
+    private TableColumn columnNombreCliente;
+    @FXML
+    private TableColumn columnApellidoCliente;
+    @FXML
+    private TableColumn columnIdCliente;
+    @FXML
+    private TableColumn columnTelefonoCliente;
+    @FXML
+    private TableColumn columnDireccionCliente;
+    @FXML
+    private TableColumn columnCorrreoCliente;
+    @FXML
+    private TableColumn columnFNacimientoCliente;
+    @FXML
+    private Button btnActualizarCliente;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

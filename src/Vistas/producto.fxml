@@ -86,7 +86,7 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
+                  <Label fx:id="lavelFechaEnvasado" prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -172,11 +172,6 @@
                      </font>
                   </TextField>
                   <DatePicker fx:id="dateFechaEnvasado" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-                  <Label fx:id="labelCodigoAprovacion" prefHeight="18.0" prefWidth="176.0" text="Codigo de Aprovacion" textFill="WHITE" GridPane.rowIndex="6">
-                     <font>
-                        <Font name="Arial Rounded MT Bold" size="13.0" />
-                     </font>
-                  </Label>
                   <TextField fx:id="txtCodigoAprovacionProducto" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
@@ -192,12 +187,17 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="labelTemperatura1" prefHeight="18.0" prefWidth="191.0" text="Fecha de vencimiento" textFill="WHITE" GridPane.rowIndex="6">
+                  <DatePicker fx:id="dateFechaVencimiento" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="labelFechaVencimineto" prefHeight="18.0" prefWidth="191.0" text="Fecha de vencimiento" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <DatePicker fx:id="dateFechaVencimiento" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="labelCodigoAprovacion" prefHeight="18.0" prefWidth="176.0" text="Codigo de Aprovacion" textFill="WHITE" GridPane.rowIndex="6">
+                     <font>
+                        <Font name="Arial Rounded MT Bold" size="13.0" />
+                     </font>
+                  </Label>
                </children>
             </GridPane>
             <GridPane layoutX="699.0" layoutY="-7.0" prefHeight="300.0" prefWidth="215.0">

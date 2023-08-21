@@ -59,7 +59,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(String correo, Date fechaNacimiento, String nombre, String apellidos, String id, String telefono) {
+    public Persona(String nombre, String apellidos, String id, String telefono) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.id = id;

@@ -26,8 +26,8 @@ public class ProductoProcesado extends Producto{
     public ProductoProcesado() {
     }
 
-    public ProductoProcesado(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
-        super(codigo, nombre, descripcion, valorUnitario, cantidadExistencia);
+    public ProductoProcesado(String codigo, String nombre, double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
+        super(codigo, nombre, valorUnitario, cantidadExistencia);
         this.fechaVencimiento = fechaVencimiento;
     }
 }

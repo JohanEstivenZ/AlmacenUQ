@@ -48,8 +48,8 @@ public class ProductoEnvasado extends Producto {
     public ProductoEnvasado() {
     }
 
-    public ProductoEnvasado(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia, Date fechaEnvasado, float pesoEnvase, Pais paisOrigen) {
-        super(codigo, nombre, descripcion, valorUnitario, cantidadExistencia);
+    public ProductoEnvasado(String codigo, String nombre, double valorUnitario, int cantidadExistencia, Date fechaEnvasado, float pesoEnvase, Pais paisOrigen) {
+        super(codigo, nombre, valorUnitario, cantidadExistencia);
         this.fechaEnvasado = fechaEnvasado;
         this.pesoEnvase = pesoEnvase;
         this.paisOrigen = paisOrigen;

@@ -2,7 +2,7 @@ package Modelos;
 /*
  * @author Juan José Restrepo Morales - Johan Estiven Zapata
  */
-public class ProductoRefigerado extends Producto {
+public class ProductoRefrigerado extends Producto {
 
     private int codigoAprobacion;
 
@@ -32,11 +32,11 @@ public class ProductoRefigerado extends Producto {
                 '}';
     }
 
-    public ProductoRefigerado() {
+    public ProductoRefrigerado() {
     }
 
-    public ProductoRefigerado(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia, int codigoAprobacion, float temperaturaRefigeracion) {
-        super(codigo, nombre, descripcion, valorUnitario, cantidadExistencia);
+    public ProductoRefrigerado(String codigo, String nombre, double valorUnitario, int cantidadExistencia, int codigoAprobacion, float temperaturaRefigeracion) {
+        super(codigo, nombre, valorUnitario, cantidadExistencia);
         this.codigoAprobacion = codigoAprobacion;
         this.temperaturaRefigeracion = temperaturaRefigeracion;
     }

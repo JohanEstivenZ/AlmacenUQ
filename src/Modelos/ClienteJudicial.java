@@ -26,8 +26,8 @@ public class ClienteJudicial extends Cliente{
     public ClienteJudicial() {
     }
 
-    public ClienteJudicial(String correo, Date fechaNacimiento, String nombre, String apellidos, String id, String telefono, String nit) {
-        super(correo, fechaNacimiento, nombre, apellidos, id, telefono);
+    public ClienteJudicial(String nombre, String apellidos, String id, String telefono, String nit) {
+        super(nombre, apellidos, id, telefono);
         this.nit = nit;
     }
 }

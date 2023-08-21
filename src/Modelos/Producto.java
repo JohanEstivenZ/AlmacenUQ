@@ -8,8 +8,6 @@ public class Producto {
 
     private String nombre;
 
-    private String descripcion;
-
     private double valorUnitario;
 
     private int cantidadExistencia;
@@ -28,14 +26,6 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
     }
 
     public double getValorUnitario() {
@@ -59,7 +49,6 @@ public class Producto {
         return "Producto{" +
                 "codigo='" + codigo + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", descripcion='" + descripcion + '\'' +
                 ", valorUnitario=" + valorUnitario +
                 ", cantidadExistencia=" + cantidadExistencia +
                 '}';
@@ -68,10 +57,9 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia) {
+    public Producto(String codigo, String nombre, double valorUnitario, int cantidadExistencia) {
         this.codigo = codigo;
         this.nombre = nombre;
-        this.descripcion = descripcion;
         this.valorUnitario = valorUnitario;
         this.cantidadExistencia = cantidadExistencia;
     }

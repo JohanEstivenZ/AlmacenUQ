@@ -58,6 +58,14 @@ public class Persona {
         this.id = id;
     }
 
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
     public String getTelefono() {
         return telefono;
     }
@@ -66,4 +74,38 @@ public class Persona {
         this.telefono = telefono;
     }
 
+<<<<<<< HEAD
+=======
+    private String nombre;
+
+    private String apellidos;
+
+    private String id;
+    private String direccion;
+
+    private String telefono;
+
+
+    @Override
+    public String toString() {
+        return "Persona{" +
+                "nombre='" + nombre + '\'' +
+                ", apellidos='" + apellidos + '\'' +
+                ", id='" + id + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                '}';
+    }
+
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellidos, String id,String direccion, String telefono) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.id = id;
+        this.direccion = direccion;
+        this.telefono = telefono;
+    }
+>>>>>>> 2350f5ab6e431d0a0c44e9a87194f8deb44744cc
 }

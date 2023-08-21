@@ -49,8 +49,8 @@ public class Aplicacion extends Application {
         return Almacen.getListaClientesNaturales();
     }
 
-    public ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
-                                              String telefono, String correo, Date fechaNacimeinto) {
+    public static ClienteNatural crearClienteNatural(String nombre, String apellido, String identificacion, String direccion,
+                                                     String telefono, String correo, Date fechaNacimeinto) {
 
         ClienteNatural cNatural = Almacen.crearClienteNatural(nombre, apellido, identificacion, direccion, telefono, correo, fechaNacimeinto);
 
@@ -73,8 +73,8 @@ public class Aplicacion extends Application {
         return Almacen.getListaClientesJuridicos();
     }
 
-    public ClienteJuridico crearClienteJuridico(String nombre, String apellido, String id,
-                                                String direccion, String telefono, String nit) {
+    public static ClienteJuridico crearClienteJuridico(String nombre, String apellido, String id,
+                                                       String direccion, String telefono, String nit) {
 
         ClienteJuridico cJuridica = Almacen.crearClienteJuridico(nombre, apellido, id, direccion, telefono, nit);
 

@@ -1,6 +1,6 @@
 package Controlador;
 
-import Modelos.Persona;
+
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;

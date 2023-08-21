@@ -8,6 +8,24 @@ public class ProductoProcesado extends Producto{
 
     private Date fechaVencimiento;
 
+    public Date getFechaVencimiento() {
+        return fechaVencimiento;
+    }
+
+    public void setFechaVencimiento(Date fechaVencimiento) {
+        this.fechaVencimiento = fechaVencimiento;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductoProcesado{" +
+                "fechaVencimiento=" + fechaVencimiento +
+                '}';
+    }
+
+    public ProductoProcesado() {
+    }
+
     public ProductoProcesado(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
         super(codigo, nombre, descripcion, valorUnitario, cantidadExistencia);
         this.fechaVencimiento = fechaVencimiento;

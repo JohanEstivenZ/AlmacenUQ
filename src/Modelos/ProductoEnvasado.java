@@ -12,6 +12,42 @@ public class ProductoEnvasado extends Producto {
 
     private Pais paisOrigen;
 
+    public Date getFechaEnvasado() {
+        return fechaEnvasado;
+    }
+
+    public void setFechaEnvasado(Date fechaEnvasado) {
+        this.fechaEnvasado = fechaEnvasado;
+    }
+
+    public float getPesoEnvase() {
+        return pesoEnvase;
+    }
+
+    public void setPesoEnvase(float pesoEnvase) {
+        this.pesoEnvase = pesoEnvase;
+    }
+
+    public Pais getPaisOrigen() {
+        return paisOrigen;
+    }
+
+    public void setPaisOrigen(Pais paisOrigen) {
+        this.paisOrigen = paisOrigen;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductoEnvasado{" +
+                "fechaEnvasado=" + fechaEnvasado +
+                ", pesoEnvase=" + pesoEnvase +
+                ", paisOrigen=" + paisOrigen +
+                '}';
+    }
+
+    public ProductoEnvasado() {
+    }
+
     public ProductoEnvasado(String codigo, String nombre, String descripcion, double valorUnitario, int cantidadExistencia, Date fechaEnvasado, float pesoEnvase, Pais paisOrigen) {
         super(codigo, nombre, descripcion, valorUnitario, cantidadExistencia);
         this.fechaEnvasado = fechaEnvasado;

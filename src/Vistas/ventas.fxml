@@ -78,7 +78,7 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="txtTotalVenta" prefHeight="18.0" prefWidth="176.0" text="Total" textFill="WHITE" GridPane.rowIndex="4">
+                  <Label fx:id="lavelTotalVenta" prefHeight="18.0" prefWidth="176.0" text="Total" textFill="WHITE" GridPane.rowIndex="4">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>

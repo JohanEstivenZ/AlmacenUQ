@@ -94,9 +94,9 @@ public class Aplicacion extends Application {
 
     // -----------------------------PRODUCTO ENVASADO-------------------
 
-    public ProductoEnvasado crearProductoEnvasado(String codigo, String nombre, double valorUnitario,
-                                                  int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
-                                                  Pais paisOrigen) {
+    public static ProductoEnvasado crearProductoEnvasado(String codigo, String nombre, double valorUnitario,
+                                                         int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                                         Pais paisOrigen) {
 
         ProductoEnvasado proEnva = Almacen.crearProductoEnvasado(codigo, nombre, valorUnitario, cantidadExistencia, fechaEnvasado, pesoEnvase, null);
 
@@ -143,9 +143,9 @@ public class Aplicacion extends Application {
 
     // ----------------------------- PRODUCTO REFRIGERADO -------------------
 
-    public ProductoRefrigerado crearProductoRefrigerado(String codigo, String nombre, double valorUnitario,
-                                                        int cantidadExistencia, int codigoAprobacion,
-                                                        float temperaturaRefrigeracion) {
+    public static ProductoRefrigerado crearProductoRefrigerado(String codigo, String nombre, double valorUnitario,
+                                                               int cantidadExistencia, int codigoAprobacion,
+                                                               float temperaturaRefrigeracion) {
 
         ProductoRefrigerado proRefri = Almacen.crearProductoRefrigerado(codigo, nombre, valorUnitario, cantidadExistencia,
                 codigoAprobacion, temperaturaRefrigeracion);

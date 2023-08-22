@@ -135,17 +135,19 @@ public class ControladorProducto implements Initializable {
 
             String codigo = txtCodigoProducto.getText();
             String nombre = txtNombreProducto.getText();
-            String valorUnitario = txtValorProducto.getText();
-            String cantidadExistente = txtCantidadDisponibleProducto.getText();
+            double valorUnitario = Double.parseDouble(txtValorUnitarioProducto.getText());
+            String cantidadExistente = txtCantidadExistenteProducto.getText();
             String pesoEnvase = txtPesoEnvaseProducto.getText();
-            LocalDate fechaEnvasado = dateFechaEnvase.getValue();
+            LocalDate fechaEnvasado = dateFechaEnvasado.getValue();
+            Date fechaEnvasadoDate = Date.from(fechaEnvasado.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
-            if (validarDatosProEnva(codigo, nombre, valorUnitario, cantidadExistente, pesoEnvase, fechaEnvasado)) {
 
+            if (validarDatosProEnva(codigo, nombre, String.valueOf(valorUnitario), cantidadExistente, pesoEnvase, fechaEnvasado)) {
+                int cantEx = Integer.parseInt(cantidadExistente);
+                float pesoEnv = Float.parseFloat(pesoEnvase);
                 ProductoEnvasado proEnva = null;
 
-                proEnva = aplicacion.crearProductoEnvasado(codigo, codigo, nombre, valorUnitario, cantidadExistente,
-                        pesoEnvase, fechaEnvasado);
+                proEnva = Aplicacion.crearProductoEnvasado(codigo, nombre, valorUnitario, cantEx, fechaEnvasadoDate, pesoEnv, null);
 
                 if (proEnva != null) {
 
@@ -159,27 +161,30 @@ public class ControladorProducto implements Initializable {
                     mostrarMensaje("Notificacion producto", "Producto N0 registrado", mensaje, AlertType.ERROR);
                 }
             }
-        } else if (rdoProductoRefrigerado.isSelected()) {
+        } else if (rdoRefigerado.isSelected()) {
 
             String codigo = txtCodigoProducto.getText();
             String nombre = txtNombreProducto.getText();
-            String valorUnitario = txtValorProducto.getText();
-            String cantidadExistente = txtCantidadDisponibleProducto.getText();
-            String codigoAprobacion = txtCodigoAprobacionProductos.getText();
-            String temperaturaRefrigerado = txtTemperaturaRefrigeradoProductos.getText();
+            double valorUnitario = Double.parseDouble(txtValorUnitarioProducto.getText());
+            String cantidadExistente = txtCantidadExistenteProducto.getText();
+            String codigoAprobacion = txtCodigoAprovacionProducto.getText();
+            String temperaturaRefrigerado = txtTemperaturaRefigeramientoProducto.getText();
 
-            if (validarDatosProRefri(codigo, nombre, valorUnitario, cantidadExistente, codigoAprobacion,
+            if (validarDatosProRefri(codigo, nombre, String.valueOf(valorUnitario), cantidadExistente, codigoAprobacion,
                     temperaturaRefrigerado)) {
+                int cantEx = Integer.parseInt(cantidadExistente);
+                int codApr = Integer.parseInt(cantidadExistente);
+                float tempRef = Float.parseFloat(temperaturaRefrigerado);
 
                 ProductoRefrigerado proRefri = null;
 
-                proRefri = aplicacion.crearProductoRefrigerado(codigo, nombre, valorUnitario, cantidadExistente,
-                        codigoAprobacion, temperaturaRefrigerado);
+                proRefri = Aplicacion.crearProductoRefrigerado(codigo, nombre, valorUnitario, cantEx,
+                        codApr, tempRef);
 
                 if (proRefri != null) {
 
                     listaProductoData.add(proRefri);
-                    limpiarCamposTextoProductos();
+                    limpiarCamposProductos();
                     mostrarMensaje("Notificacion producto", "producto registrado",
                             "El producto se ha registrado con exito.", AlertType.INFORMATION);
                 } else {

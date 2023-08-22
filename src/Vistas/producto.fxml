@@ -29,19 +29,21 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="277.0" prefHeight="500.0" prefWidth="1082.0" style="-fx-background-color: #000000;">
+      <AnchorPane layoutX="282.0" prefHeight="500.0" prefWidth="1082.0" style="-fx-background-color: #000000;">
          <children>
             <HBox layoutX="-6.0" layoutY="-3.0" prefHeight="100.0" prefWidth="200.0" />
             <TableView layoutX="9.0" layoutY="290.0" prefHeight="205.0" prefWidth="954.0">
                <columns>
-                  <TableColumn prefWidth="87.20001220703125" text="Nombre" />
-                  <TableColumn prefWidth="80.79998779296875" text="Apellido" />
-                  <TableColumn prefWidth="94.39993286132812" text="Identificacion" />
-                  <TableColumn prefWidth="82.39996337890625" text="Telefono" />
-                  <TableColumn prefWidth="177.60003662109375" text="Direccion" />
-                  <TableColumn prefWidth="156.79998779296875" text="Correo" />
-                  <TableColumn prefWidth="135.2000732421875" text="Fecha de nacimiento" />
-                  <TableColumn prefWidth="136.79990234374998" text="Nit" />
+                  <TableColumn prefWidth="87.20001220703125" text="Codigo" />
+                  <TableColumn prefWidth="80.79998779296875" text="Fecha" />
+                  <TableColumn prefWidth="94.39993286132812" text="Descripcion" />
+                  <TableColumn prefWidth="92.800048828125" text="Valor unitario" />
+                  <TableColumn prefWidth="127.199951171875" text="Cantidad existente" />
+                  <TableColumn prefWidth="93.5999755859375" text="Tipo producto" />
+                  <TableColumn prefWidth="116.00006103515625" text="Fecha de envasado" />
+                  <TableColumn prefWidth="80.00006103515625" text="Peso envase" />
+                  <TableColumn prefWidth="76.0" text="Pais origen" />
+                  <TableColumn prefWidth="62.4000244140625" text="Codigo" />
                </columns>
             </TableView>
             <GridPane layoutX="72.0" layoutY="10.0" prefHeight="266.0" prefWidth="539.0">
@@ -61,12 +63,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Nombre" textFill="WHITE">
+                  <Label prefHeight="18.0" prefWidth="176.0" text="Codigo" textFill="WHITE">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Codigo" textFill="WHITE" GridPane.rowIndex="1">
+                  <Label prefHeight="18.0" prefWidth="176.0" text="Fecha" textFill="WHITE" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -86,12 +88,12 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lavelFechaEnvasado" prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
+                  <Label fx:id="lavelFechaEnvasado1" prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lavelPesoEnvase" prefHeight="18.0" prefWidth="176.0" text="Peso del envase" textFill="WHITE" GridPane.rowIndex="7">
+                  <Label fx:id="lavelPesoEnvase1" prefHeight="18.0" prefWidth="176.0" text="Peso del envase" textFill="WHITE" GridPane.rowIndex="7">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -121,7 +123,7 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="lavelPaisOrigen" prefHeight="18.0" prefWidth="176.0" text="Pais de origen" textFill="WHITE" GridPane.rowIndex="8">
+                  <Label fx:id="lavelPaisOrigen1" prefHeight="18.0" prefWidth="176.0" text="Pais de origen" textFill="WHITE" GridPane.rowIndex="8">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>

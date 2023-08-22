@@ -45,8 +45,6 @@ public class ControladorProducto implements Initializable {
     @javafx.fxml.FXML
     private DatePicker dateFechaVencimiento;
     @FXML
-    private Label lavelFechaEnvasado;
-    @FXML
     private Label labelFechaVencimineto;
     @FXML
     private RadioButton RdoEnvasado;
@@ -54,11 +52,13 @@ public class ControladorProducto implements Initializable {
     private RadioButton RdoRefigerado;
     @FXML
     private RadioButton RdoProcesado;
-    @FXML
-    private Label lavelPesoEnvase;
-    @FXML
-    private Label lavelPaisOrigen;
     private ToggleGroup radioButtonGroup;
+    @FXML
+    private Label lavelFechaEnvasado1;
+    @FXML
+    private Label lavelPesoEnvase1;
+    @FXML
+    private Label lavelPaisOrigen1;
 
 
     @Override

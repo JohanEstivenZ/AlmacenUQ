@@ -106,10 +106,10 @@ public class ControladorCliente implements Initializable {
 
         labelCorreo.setVisible(false);
         txtCorreoCliente.setVisible(false);
-        labelFechaNacimineto.setVisible(false);
-        dateFechaNacimiento.setVisible(false);
         labelNit.setVisible(false);
         txtNitCliente.setVisible(false);
+        labelFechaNacimineto.setVisible(false);
+        dateFechaNacimiento.setVisible(false);
 
         radioButtonGroup = new ToggleGroup();
         rdoClienteJuridico.setToggleGroup(radioButtonGroup);
@@ -150,20 +150,21 @@ public class ControladorCliente implements Initializable {
             String selectedLabel = selectedRadioButton.getText();
 
             if (selectedLabel.equals("Juridica")) {
-                labelCorreo.setVisible(isClienteJuridico);
-                txtCorreoCliente.setVisible(isClienteJuridico);
-                labelFechaNacimineto.setVisible(isClienteJuridico);
-                dateFechaNacimiento.setVisible(isClienteJuridico);
-                labelNit.setVisible(false);
-                txtNitCliente.setVisible(false);
-
-            }else if (selectedLabel.equals("Natural")) {
+                labelNit.setVisible(isClienteJuridico);
+                txtNitCliente.setVisible(isClienteJuridico);
                 labelCorreo.setVisible(false);
                 txtCorreoCliente.setVisible(false);
                 labelFechaNacimineto.setVisible(false);
                 dateFechaNacimiento.setVisible(false);
-                labelNit.setVisible(isClienteNatural);
-                txtNitCliente.setVisible(isClienteNatural);
+
+            }else if (selectedLabel.equals("Natural")) {
+                labelNit.setVisible(false);
+                txtNitCliente.setVisible(false);
+                labelCorreo.setVisible(isClienteNatural);
+                txtCorreoCliente.setVisible(isClienteNatural);
+                labelFechaNacimineto.setVisible(isClienteNatural);
+                dateFechaNacimiento.setVisible(isClienteNatural);
+
             }
 
         }

@@ -34,6 +34,8 @@ public class ControladorVentas implements Initializable {
     private TextField txtSubTotalVenta;
     @javafx.fxml.FXML
     private TextField txtProductoVendido;
+    @javafx.fxml.FXML
+    private Label lavelTotalVenta;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

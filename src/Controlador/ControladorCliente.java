@@ -198,10 +198,12 @@ public class ControladorCliente implements Initializable {
 
     @FXML
     public void actualizarCliente(ActionEvent actionEvent) {
+        actualizarCliente();
     }
 
     @FXML
     public void eliminarCliente(ActionEvent actionEvent) {
+        eliminarCliente();
     }
 
     public void limpiarCamposCliente() {

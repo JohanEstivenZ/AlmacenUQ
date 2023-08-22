@@ -57,14 +57,14 @@ public class Aplicacion extends Application {
         return cNatural;
     }
 
-    public boolean actualizarPersonaNatural(String idActual, String nombre, String apellido, String id,
-                                            String direccion, String telefono, String correo, Date fechaNacimiento) {
+    public static boolean actualizarClienteNatural(String idActual, String nombre, String apellido, String id,
+                                                   String direccion, String telefono, String correo, Date fechaNacimiento) {
 
         return Almacen.actualizarClienteNatural(idActual, nombre, apellido, id, direccion, telefono, correo, fechaNacimiento);
 
     }
 
-    public boolean eliminarPersonaNatural(String id) {
+    public static boolean eliminarClienteNatural(String id) {
         return Almacen.eliminarClienteNatural(id);
     }
 
@@ -81,15 +81,15 @@ public class Aplicacion extends Application {
         return cJuridica;
     }
 
-    public boolean actualizarClienteJuridico(String idActualNit, String nombre, String apellido, String id, String nit,
-                                             String direccion, String telefono) {
+    public static boolean actualizarClienteJuridico(String idActual, String nombre, String apellido, String id,
+                                                    String direccion, String telefono, String nit) {
 
-        return Almacen.actualizarClienteJuridico(idActualNit, nombre, apellido,id, direccion, telefono, nit);
+        return Almacen.actualizarClienteJuridico(id, nombre, apellido,id, direccion, telefono, nit);
 
     }
 
-    public boolean eliminarClienteJuridico(String nit) {
-        return Almacen.eliminarClienteJuridico(nit);
+    public static boolean eliminarClienteJuridico(String id) {
+        return Almacen.eliminarClienteJuridico(id);
     }
 
     // -----------------------------PRODUCTO ENVASADO-------------------
@@ -167,4 +167,7 @@ public class Aplicacion extends Application {
         return Almacen.eliminarProductoRefrigerado(codigo);
     }
 
+    public static ArrayList<Cliente> obtenerListaClientes() {
+        return Almacen.getListaClientes();
+    }
 }

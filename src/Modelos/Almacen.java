@@ -11,7 +11,7 @@ public class Almacen {
     private static ArrayList<ClienteJuridico> listaClientesJuridicos = new ArrayList<ClienteJuridico>();
 
     private static ArrayList<ClienteNatural> listaClientesNaturales = new ArrayList<ClienteNatural>();
-    private ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
+    private static ArrayList<Cliente> listaClientes = new ArrayList<Cliente>();
 
     private static ArrayList<ProductoEnvasado> listaProductosEnvasados = new ArrayList<ProductoEnvasado>();
     private static ArrayList<ProductoProcesado> listaProductosProcesados = new ArrayList<ProductoProcesado>();
@@ -22,7 +22,7 @@ public class Almacen {
 
     public Almacen() {
     }
-    
+
     public Almacen(ArrayList<ClienteJuridico> listaClientesJuridicos, ArrayList<ClienteNatural> listaClientesNaturales, ArrayList<Cliente> listaClientes, ArrayList<ProductoEnvasado> listaProductosEnvasados, ArrayList<ProductoProcesado> listaProductosProcesados, ArrayList<ProductoRefrigerado> listaProductosRefrigerados, ArrayList<Producto> listaProductos, ArrayList<Venta> listaVentas) {
         this.listaClientesJuridicos = listaClientesJuridicos;
         this.listaClientesNaturales = listaClientesNaturales;
@@ -33,14 +33,14 @@ public class Almacen {
         this.listaProductos = listaProductos;
         this.listaVentas = listaVentas;
 
-        // Datos quedamos personas
+        // Datos quedamos
         ClienteNatural cNatural = new ClienteNatural("Juan José", "Restrepo Morales", "1018224398","Calle 101 D #82-19", "3005772768", "juanj.restrepom@uqvirtual.edu.co",new Date(2004, 7, 4));
         listaClientes.add(cNatural);
         ClienteJuridico cJuridico = new ClienteJuridico("Johan Estiven", "Zapata", "1015265458","Carrera 16 bis # 11-02 Piso 1","3183137658", "126.82003.50-0");
         listaClientes.add(cJuridico);
 
 
-        // Datos quemados productos
+        // Datos quemados
 
         ProductoEnvasado prodEnva = new ProductoEnvasado("1001", "Arroz", 2500, 10,new Date(2023,7,20),500, Pais.COLOMBIA);
         listaProductos.add(prodEnva);
@@ -66,7 +66,7 @@ public class Almacen {
         this.listaClientesNaturales = listaClientesNaturales;
     }
 
-    public ArrayList<Cliente> getListaClientes() {
+    public static ArrayList<Cliente> getListaClientes() {
         return listaClientes;
     }
 
@@ -199,20 +199,20 @@ public class Almacen {
 
     }
 
-    public static ClienteJuridico obtenerClienteJuridico(String nit) {
+    public static ClienteJuridico obtenerClienteJuridico(String id) {
         for (ClienteJuridico cJuridico : listaClientesJuridicos) {
-            if (cJuridico.getNit().equalsIgnoreCase(nit)) {
+            if (cJuridico.getId().equalsIgnoreCase(id)) {
                 return cJuridico;
             }
         }
         return null;
     }
 
-    public static boolean actualizarClienteJuridico(String idActualNit, String nombre, String apellido, String id, String nit,
+    public static boolean actualizarClienteJuridico(String idActual, String nombre, String apellido, String id, String nit,
                                                     String direccion, String telefono) {
 
         ClienteJuridico cJuridico = null;
-        cJuridico = obtenerClienteJuridico(idActualNit);
+        cJuridico = obtenerClienteJuridico(idActual);
 
         if (cJuridico != null) {
 
@@ -433,5 +433,6 @@ public class Almacen {
             return false;
         }
     }
+
 
 }

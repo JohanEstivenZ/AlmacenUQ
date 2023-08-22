@@ -38,7 +38,7 @@
                   <TableColumn fx:id="columnIdCliente" prefWidth="94.39993286132812" text="Identificacion" />
                   <TableColumn fx:id="columnTelefonoCliente" prefWidth="82.39996337890625" text="Telefono" />
                   <TableColumn fx:id="columnDireccionCliente" prefWidth="177.60003662109375" text="Direccion" />
-                  <TableColumn fx:id="columnCorrreoCliente" prefWidth="156.79998779296875" text="Correo" />
+                  <TableColumn fx:id="columnCorreoCliente" prefWidth="156.79998779296875" text="Correo" />
                   <TableColumn fx:id="columnFNacimientoCliente" prefWidth="135.2000732421875" text="Fecha de nacimiento" />
                   <TableColumn fx:id="columnNitCliente" prefWidth="136.79990234374998" text="Nit" />
               </columns>

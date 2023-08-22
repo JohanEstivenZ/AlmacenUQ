@@ -41,6 +41,6 @@
             <Button fx:id="botonVender" layoutX="387.0" layoutY="217.0" mnemonicParsing="false" onAction="#vender" text="Vender" />
          </children>
       </AnchorPane>
-      <Button layoutX="646.0" layoutY="446.0" mnemonicParsing="false" text="Datalle de ventas" />
+      <Button layoutX="646.0" layoutY="446.0" mnemonicParsing="false" onAction="#detalleVenta" text="Datalle de ventas" />
    </children>
 </AnchorPane>

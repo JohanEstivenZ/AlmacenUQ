@@ -1,41 +1,60 @@
 package Controlador;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class ControladorVentas implements Initializable {
 
+    private void cargarFXML(String rutaFXML) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(rutaFXML));
+            Parent root = loader.load();
+
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+
+            // Cierra la ventana actual
+            ((Stage) ((Node) root).getScene().getWindow()).close();
+
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @javafx.fxml.FXML
-    private Label lavelFechaEnvasado;
+    private ComboBox comboBoxCliente;
     @javafx.fxml.FXML
-    private Label lavelPesoEnvase;
+    private TableView tbvwVenta;
     @javafx.fxml.FXML
-    private TextField txtNombreVenta;
+    private TableColumn columVentaProducto;
     @javafx.fxml.FXML
-    private TextField txtCodigoVenta;
+    private TableColumn columVentaValor;
     @javafx.fxml.FXML
-    private TextField txtDetalleVenta;
+    private TableColumn columVentaDisponibilidad;
     @javafx.fxml.FXML
-    private TextField txtClienteVenta;
+    private TableView tbvwVentaCliente;
     @javafx.fxml.FXML
-    private TextField txtTotalVenta;
+    private TableColumn columVentaClienteProducto;
     @javafx.fxml.FXML
-    private Label lavelPaisOrigen;
+    private TableColumn columVentaClienteValor;
     @javafx.fxml.FXML
-    private TextField txtCantidadProducto;
+    private TableColumn columVentaClienteCantidad;
     @javafx.fxml.FXML
-    private TextField txtIvaVenta;
-    @javafx.fxml.FXML
-    private TextField txtSubTotalVenta;
-    @javafx.fxml.FXML
-    private TextField txtProductoVendido;
-    @javafx.fxml.FXML
-    private Label lavelTotalVenta;
+    private Button botonVender;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -47,4 +66,9 @@ public class ControladorVentas implements Initializable {
     public void vender () {
 
     }
+    public void detalleVenta (ActionEvent actionEvent) {
+        cargarFXML("/Vistas/detalleVenta.fxml");
+    }
+
+
 }

@@ -79,6 +79,14 @@ public class ControladorProducto implements Initializable {
     private Producto productoSeleccionado;
     @FXML
     private TableView tblProductos;
+    @FXML
+    private Button btnGuardarProducto;
+    @FXML
+    private Button btnLimpiarProducto;
+    @FXML
+    private Button btnActualizarProducto;
+    @FXML
+    private Button btnEliminarProducto;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -106,10 +114,42 @@ public class ControladorProducto implements Initializable {
         rdoProcesado.setOnAction(this::handleEnvasadoSelected);
         rdoRefigerado.setOnAction(this::handleEnvasadoSelected);
 
+        // Configurar las columnas de la tabla para productos
+        TableColumn<Producto, String> codigoColumn = new TableColumn<>("Código");
+        codigoColumn.setCellValueFactory(new PropertyValueFactory<>("codigo"));
+
+        TableColumn<Producto, String> nombreColumn = new TableColumn<>("Nombre");
+        nombreColumn.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+
+        TableColumn<Producto, Double> valorUnitarioColumn = new TableColumn<>("Valor Unitario");
+        valorUnitarioColumn.setCellValueFactory(new PropertyValueFactory<>("valorUnitario"));
+
+        TableColumn<Producto, Integer> cantidadExistenteColumn = new TableColumn<>("Cantidad Existente");
+        cantidadExistenteColumn.setCellValueFactory(new PropertyValueFactory<>("cantidadExistente"));
+
+        // Agregar las columnas a la tabla
+        tblProductos.getColumns().addAll(codigoColumn, nombreColumn, valorUnitarioColumn, cantidadExistenteColumn);
+
+        // Configura la tabla para usar la lista de datos
+        tblProductos.setItems(listaProductosData);
+
+        // Agregar un listener para manejar la selección de productos
+        tblProductos.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+            productoSeleccionado = (Producto) newSelection;
+            mostrarInformacionProductos(); // Debes implementar este método para mostrar la información del producto seleccionado.
+        });
 
     }
 
+    private void mostrarInformacionProductos() {
+        if (productoSeleccionado != null) {
+            txtCodigoProducto.setText(productoSeleccionado.getCodigo());
+            txtNombreProducto.setText(productoSeleccionado.getNombre());
+            txtCantidadExistenteProducto.setText(String.valueOf(productoSeleccionado.getCantidadExistencia()));
+            txtValorUnitarioProducto.setText(String.valueOf(productoSeleccionado.getValorUnitario()));
 
+        }
+    }
     public void agregarProducto() {
 
         if (rdoProcesado.isSelected()) {
@@ -389,6 +429,7 @@ public class ControladorProducto implements Initializable {
         txtCodigoProducto.setText("");
         txtNombreProducto.setText("");
         txtValorUnitarioProducto.setText("");
+        txtDescripcionProducto.setText("");
         txtCantidadExistenteProducto.setText("");
         txtPesoEnvaseProducto.setText("");
         txtCodigoAprovacionProducto.setText("");
@@ -572,6 +613,26 @@ public class ControladorProducto implements Initializable {
 
 
         }
+    }
+
+    @FXML
+    public void guardarCliente(ActionEvent actionEvent) {
+        agregarProducto();
+    }
+
+    @FXML
+    public void limpiarProductos(ActionEvent actionEvent) {
+        limpiarCamposProductos();
+    }
+
+    @FXML
+    public void actualizarProductos(ActionEvent actionEvent) {
+        actualizarProducto();
+    }
+
+    @FXML
+    public void eliminarProducto(ActionEvent actionEvent) {
+        eliminarProducto();
     }
 }
 

@@ -213,12 +213,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Guardar">
+                  <Button fx:id="btnGuardarProducto" mnemonicParsing="false" onAction="#guardarCliente" prefHeight="26.0" prefWidth="83.0" text="Guardar">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Limpiar" GridPane.rowIndex="1">
+                  <Button fx:id="btnLimpiarProducto" mnemonicParsing="false" onAction="#limpiarProductos" prefHeight="26.0" prefWidth="83.0" text="Limpiar" GridPane.rowIndex="1">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -228,14 +228,14 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Button>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Actualizar" GridPane.rowIndex="3">
+                  <Button fx:id="btnActualizarProducto" mnemonicParsing="false" onAction="#actualizarProductos" prefHeight="26.0" prefWidth="83.0" text="Actualizar" GridPane.rowIndex="3">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Button>
                </children>
             </GridPane>
-            <Button layoutX="972.0" layoutY="382.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" text="Eliminar">
+            <Button fx:id="btnEliminarProducto" layoutX="972.0" layoutY="382.0" mnemonicParsing="false" onAction="#eliminarProducto" prefHeight="26.0" prefWidth="83.0" text="Eliminar">
                <font>
                   <Font name="Arial Rounded MT Bold" size="13.0" />
                </font>

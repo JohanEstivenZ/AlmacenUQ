@@ -5,8 +5,6 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -17,6 +15,8 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
 <AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorCliente">
    <children>
       <AnchorPane prefHeight="500.0" prefWidth="282.0" style="-fx-background-color: #ffb340;">
@@ -32,16 +32,16 @@
          <children>
             <HBox prefHeight="100.0" prefWidth="200.0" />
             <TableView fx:id="tblCliente" layoutX="9.0" layoutY="290.0" prefHeight="205.0" prefWidth="954.0">
-              <columns>
-                <TableColumn fx:id="columnNombreCliente" prefWidth="87.20001220703125" text="Nombre" />
-                <TableColumn fx:id="columnApellidoCliente" prefWidth="80.79998779296875" text="Apellido" />
+               <columns>
+                  <TableColumn fx:id="columnNombreCliente" prefWidth="87.20001220703125" text="Nombre" />
+                  <TableColumn fx:id="columnApellidoCliente" prefWidth="80.79998779296875" text="Apellido" />
                   <TableColumn fx:id="columnIdCliente" prefWidth="94.39993286132812" text="Identificacion" />
                   <TableColumn fx:id="columnTelefonoCliente" prefWidth="82.39996337890625" text="Telefono" />
                   <TableColumn fx:id="columnDireccionCliente" prefWidth="177.60003662109375" text="Direccion" />
-                  <TableColumn fx:id="columnCorrreoCliente" prefWidth="156.79998779296875" text="Correo" />
+                  <TableColumn fx:id="columnCorreoCliente" prefWidth="156.79998779296875" text="Correo" />
                   <TableColumn fx:id="columnFNacimientoCliente" prefWidth="135.2000732421875" text="Fecha de nacimiento" />
                   <TableColumn fx:id="columnNitCliente" prefWidth="136.79990234374998" text="Nit" />
-              </columns>
+               </columns>
             </TableView>
             <GridPane layoutX="104.0" layoutY="10.0" prefHeight="266.0" prefWidth="506.0">
               <columnConstraints>
@@ -57,7 +57,6 @@
                   <RowConstraints minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
-                <RowConstraints minHeight="10.0" prefHeight="500.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
                   <Label prefHeight="18.0" prefWidth="176.0" text="Nombre" textFill="WHITE">
@@ -85,12 +84,12 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Correo" textFill="WHITE" GridPane.rowIndex="6">
+                  <Label fx:id="labelCorreo" prefHeight="18.0" prefWidth="176.0" text="Correo" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Fecha de nacimiento" textFill="WHITE" GridPane.rowIndex="7">
+                  <Label fx:id="labelFechaNacimineto" prefHeight="18.0" prefWidth="176.0" text="Fecha de nacimiento" textFill="WHITE" GridPane.rowIndex="7">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -126,12 +125,12 @@
                      </font>
                   </TextField>
                   <DatePicker fx:id="dateFechaNacimiento" prefHeight="26.0" prefWidth="338.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                  <Label prefHeight="18.0" prefWidth="176.0" text="Nit" textFill="WHITE" GridPane.rowIndex="8">
+                  <Label fx:id="labelNit" prefHeight="18.0" prefWidth="176.0" text="Nit" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="txtNitCliente" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                  <TextField fx:id="txtNitCliente" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>

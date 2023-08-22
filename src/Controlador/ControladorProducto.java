@@ -113,7 +113,7 @@ public class ControladorProducto implements Initializable {
                 txtTemperaturaRefigeramientoProducto.setVisible(false);
                 dateFechaVencimiento.setVisible(false);
                 labelFechaVencimineto.setVisible(false);
-            } else if (selectedLabel.equals("Refigerado")) {
+            } else if (selectedLabel.equals("Refrigerado")) {
                 labelCodigoAprovacion.setVisible(isRefigeradoSelected);
                 txtCodigoAprovacionProducto.setVisible(isRefigeradoSelected);
                 labelTemperatura.setVisible(isRefigeradoSelected);

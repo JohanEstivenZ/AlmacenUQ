@@ -42,6 +42,7 @@ public class ControladorAlmacen implements Initializable {
     }
 
     public void abrirVentanaVenta(ActionEvent actionEvent) {
+        cargarFXML("/Vistas/ventas.fxml");
     }
 
     public void abrirVentanaCliente(ActionEvent actionEvent) {

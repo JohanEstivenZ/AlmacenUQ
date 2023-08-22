@@ -32,7 +32,7 @@
       <AnchorPane layoutX="282.0" prefHeight="500.0" prefWidth="1082.0" style="-fx-background-color: #000000;">
          <children>
             <HBox layoutX="-6.0" layoutY="-3.0" prefHeight="100.0" prefWidth="200.0" />
-            <TableView layoutX="9.0" layoutY="290.0" prefHeight="205.0" prefWidth="954.0">
+            <TableView fx:id="tblProductos" layoutX="9.0" layoutY="290.0" prefHeight="205.0" prefWidth="954.0">
                <columns>
                   <TableColumn prefWidth="87.20001220703125" text="Codigo" />
                   <TableColumn prefWidth="80.79998779296875" text="Fecha" />

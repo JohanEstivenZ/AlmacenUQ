@@ -103,16 +103,16 @@ public class Aplicacion extends Application {
         return proEnva;
     }
 
-    public boolean actualizarProductoEnvasado(String codigoNuev, String codigo, String nombre, double valorUnitario,
-                                              int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
-                                              Pais paisOrigen) {
+    public static boolean actualizarProductoEnvasado(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                                     int cantidadExistencia, Date fechaEnvasado, float pesoEnvase,
+                                                     Pais paisOrigen) {
 
         return Almacen.actualizarProductoEnvasado(codigoNuev, codigo, nombre, valorUnitario, cantidadExistencia, fechaEnvasado, pesoEnvase,
                 paisOrigen);
 
     }
 
-    public boolean eliminarProductoEnvasado(String codigo) {
+    public static boolean eliminarProductoEnvasado(String codigo) {
 
         return Almacen.eliminarProductoEnvasado(codigo);
     }
@@ -128,15 +128,15 @@ public class Aplicacion extends Application {
         return proProcs;
     }
 
-    public boolean actualizarProductoProcesado(String codigoNuev, String codigo, String nombre, double valorUnitario,
-                                               int cantidadExistencia, Date fechaVencimiento) {
+    public static boolean actualizarProductoProcesado(String codigoNuev, String codigo, String nombre, double valorUnitario,
+                                                      int cantidadExistencia, Date fechaVencimiento) {
 
         return Almacen.actualizarProductoProcesado(codigoNuev, codigo, nombre, valorUnitario, cantidadExistencia,
                 fechaVencimiento);
 
     }
 
-    public boolean eliminarProductoProcesado(String codigo) {
+    public static boolean eliminarProductoProcesado(String codigo) {
 
         return Almacen.eliminarProductoProcesado(codigo);
     }
@@ -153,16 +153,16 @@ public class Aplicacion extends Application {
         return proRefri;
     }
 
-    public boolean actualizarProductoRefrigerado(String codigoNuev,String codigo, String nombre,
-                                                 double valorUnitario, int cantidadExistencia,
-                                                 int codigoAprobacion, float temperaturaRefrigeracion) {
+    public static boolean actualizarProductoRefrigerado(String codigoNuev, String codigo, String nombre,
+                                                        double valorUnitario, int cantidadExistencia,
+                                                        int codigoAprobacion, float temperaturaRefrigeracion) {
 
         return Almacen.actualizarProductosRegrigerados(codigo, codigo, nombre, valorUnitario, cantidadExistencia,
                 codigoAprobacion, temperaturaRefrigeracion);
 
     }
 
-    public boolean eliminarProductoRefrigerado(String codigo) {
+    public static boolean eliminarProductoRefrigerado(String codigo) {
 
         return Almacen.eliminarProductoRefrigerado(codigo);
     }

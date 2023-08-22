@@ -1,4 +1,6 @@
 package Controlador;
+
+import Modelos.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
@@ -12,9 +14,14 @@ import javafx.scene.control.ToggleButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import application.Aplicacion;
 
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControladorProducto implements Initializable {
@@ -60,6 +67,18 @@ public class ControladorProducto implements Initializable {
     @FXML
     private RadioButton rdoProcesado;
 
+    private ObservableList<Producto> listaProductosData = FXCollections.observableArrayList();
+    private ObservableList<ProductoProcesado> listaProductosProcesadosData = FXCollections.observableArrayList();
+    private ObservableList<ProductoRefrigerado> listaProductosRefrigeradosData = FXCollections.observableArrayList();
+    private ObservableList<ProductoEnvasado> listaProductosEnvasadosData = FXCollections.observableArrayList();
+
+    private ProductoRefrigerado productoRefrigeradoSeleccionado;
+    private ProductoEnvasado productoEnvasadoSeleccionado;
+    private ProductoProcesado productoProcesadoSeleccionado;
+
+    private Producto productoSeleccionado;
+    @FXML
+    private TableView tblProductos;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -110,7 +129,7 @@ public class ControladorProducto implements Initializable {
 
                 if (proProcs != null) {
 
-                    listaProductoData.add(proProcs);
+                    listaProductosData.add(proProcs);
                     limpiarCamposProductos();
                     mostrarMensaje("Notificacion Producto", "Producto registrado",
                             "El producto se ha registrado con exito.", AlertType.INFORMATION);
@@ -140,7 +159,7 @@ public class ControladorProducto implements Initializable {
 
                 if (proEnva != null) {
 
-                    listaProductoData.add(proEnva);
+                    listaProductosData.add(proEnva);
                     limpiarCamposProductos();
                     mostrarMensaje("Notificacion producto", "producto registrado",
                             "El producto se ha registrado con exito.", AlertType.INFORMATION);
@@ -172,7 +191,7 @@ public class ControladorProducto implements Initializable {
 
                 if (proRefri != null) {
 
-                    listaProductoData.add(proRefri);
+                    listaProductosData.add(proRefri);
                     limpiarCamposProductos();
                     mostrarMensaje("Notificacion producto", "producto registrado",
                             "El producto se ha registrado con exito.", AlertType.INFORMATION);
@@ -189,177 +208,183 @@ public class ControladorProducto implements Initializable {
 
     public void actualizarProducto() {
 
-        if (rdoProductoPerecedero.isSelected()) {
+        if (rdoProcesado.isSelected()) {
             String codigo = txtCodigoProducto.getText();
             String nombre = txtNombreProducto.getText();
-            String valorUnitario = txtValorProducto.getText();
-            String cantidadExistente = txtCantidadDisponibleProducto.getText();
+            double valorUnitario = Double.parseDouble(txtValorUnitarioProducto.getText());
+            String cantidadExistente = txtCantidadExistenteProducto.getText();
             LocalDate fechaVencimiento = dateFechaVencimiento.getValue();
+            Date fechaVencimientoDate = Date.from(fechaVencimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
 
             boolean bandera = false;
-
+            int cantEx = Integer.parseInt(cantidadExistente);
             if (productoSeleccionado != null) {
-                if (validarDatosProPere(codigo, nombre, valorUnitario, cantidadExistente, fechaVencimiento))
+                if (validarDatosProProcs(codigo, nombre, String.valueOf(valorUnitario), cantidadExistente, fechaVencimiento))
 
-                    bandera = aplicacion.actualizarProductoPerecedero(productoSeleccionado.getCodigo(), codigo, nombre,
-                            valorUnitario, cantidadExistente, fechaVencimiento);
+                    bandera = Aplicacion.actualizarProductoProcesado(productoSeleccionado.getCodigo(), codigo, nombre,
+                            valorUnitario, cantEx, fechaVencimientoDate);
 
-                if (bandera == true) {
+                if (bandera) {
 
                     tblProductos.refresh();
-                    mostrarMensaje("Notificacion Producto", "Producto Actualizado",
-                            "El producto se ha Actualizado con exito.", AlertType.INFORMATION);
+                    mostrarMensaje("Notificación Producto", "Producto Actualizado",
+                            "El producto se ha actualizado con éxito.", AlertType.INFORMATION);
 
                 } else {
-                    mostrarMensaje("Notificacion Producto", "Producto No Actualizado",
-                            "El producto N0 se ha Actualizado.", AlertType.ERROR);
+                    mostrarMensaje("Notificación Producto", "Producto No Actualizado",
+                            "El producto no se ha actualizado.", AlertType.ERROR);
                 }
             } else {
-                mostrarMensaje("Notificacion Producto", "Producto No Seleccionado", "El producto N0 se ha Actualizado.",
+                mostrarMensaje("Notificación Producto", "Producto No Seleccionado", "El producto no se ha seleccionado.",
                         AlertType.ERROR);
             }
-        } else if (rdoProductoEnvasado.isSelected()) {
+        } else if (rdoEnvasado.isSelected()) {
             String codigo = txtCodigoProducto.getText();
             String nombre = txtNombreProducto.getText();
-            String valorUnitario = txtValorProducto.getText();
-            String cantidadExistente = txtCantidadDisponibleProducto.getText();
+            double valorUnitario = Double.parseDouble(txtValorUnitarioProducto.getText());
+            String cantidadExistente = txtCantidadExistenteProducto.getText();
             String pesoEnvase = txtPesoEnvaseProducto.getText();
-            LocalDate fechaEnvasado = dateFechaEnvase.getValue();
+            LocalDate fechaEnvasado = dateFechaEnvasado.getValue();
+            Date fechaEnvasadoDate = Date.from(fechaEnvasado.atStartOfDay(ZoneId.systemDefault()).toInstant());
+            int cantEx = Integer.parseInt(cantidadExistente);
+            float pesoEnv = Float.parseFloat(pesoEnvase);
+            String paisOrigen = (String) comboBoxPaisProducto.getValue();
 
             boolean bandera = false;
 
             if (productoSeleccionado != null) {
 
-                if (validarDatosProEnva(codigo, nombre, valorUnitario, cantidadExistente, pesoEnvase, fechaEnvasado))
+                if (validarDatosProEnva(codigo, nombre, String.valueOf(valorUnitario), cantidadExistente, pesoEnvase, fechaEnvasado))
                     ;
 
-                bandera = aplicacion.actualizarProductoEnvasado(productoSeleccionado.getCodigo(), nombre, valorUnitario,
-                        cantidadExistente, pesoEnvase, fechaEnvasado, pesoEnvase);
+                bandera = Aplicacion.actualizarProductoEnvasado(productoSeleccionado.getCodigo(), codigo, nombre,
+                        valorUnitario, cantEx, fechaEnvasadoDate, pesoEnv, Pais.valueOf(paisOrigen));
 
-                if (bandera == true) {
+                if (bandera) {
 
                     tblProductos.refresh();
-                    mostrarMensaje("Notificacion Producto", "Producto Actualizado",
-                            "El producto se ha Actualizado con exito.", AlertType.INFORMATION);
+                    mostrarMensaje("Notificación Producto", "Producto Actualizado",
+                            "El producto se ha actualizado con éxito.", AlertType.INFORMATION);
 
                 } else {
-                    mostrarMensaje("Notificacion Producto", "Producto No Actualizado",
-                            "El producto N0 se ha Actualizado.", AlertType.ERROR);
+                    mostrarMensaje("Notificación Producto", "Producto No Actualizado",
+                            "El producto no se ha actualizado.", AlertType.ERROR);
                 }
 
             }
 
-        } else if (rdoProductoRefrigerado.isSelected()) {
+        } else if (rdoRefigerado.isSelected()) {
             String codigo = txtCodigoProducto.getText();
             String nombre = txtNombreProducto.getText();
-            String valorUnitario = txtValorProducto.getText();
-            String cantidadExistente = txtCantidadDisponibleProducto.getText();
-            String codigoAprobacion = txtCodigoAprobacionProductos.getText();
-            String temperaturaRefrigerado = txtTemperaturaRefrigeradoProductos.getText();
+            double valorUnitario = Double.parseDouble(txtValorUnitarioProducto.getText());
+            String cantidadExistente = txtCantidadExistenteProducto.getText();
+            String codigoAprobacion = txtCodigoAprovacionProducto.getText();
+            String temperaturaRefrigerado = txtTemperaturaRefigeramientoProducto.getText();
 
             boolean bandera = false;
 
             if (productoSeleccionado != null) {
+                if (validarDatosProRefri(codigo, nombre, String.valueOf(valorUnitario), cantidadExistente, codigoAprobacion,
+                        temperaturaRefrigerado)) {
 
-                if (validarDatosProRefri(codigo, nombre, valorUnitario, cantidadExistente, codigoAprobacion,
-                        temperaturaRefrigerado))
-                    ;
+                    // Aquí necesitas obtener el valor seleccionado del ComboBox de país, asumiendo que es un ComboBox<String>.
 
-                bandera = aplicacion.actualizarProductoRefrigerado(productoSeleccionado.getCodigo(), nombre,
-                        valorUnitario, cantidadExistente, codigoAprobacion, temperaturaRefrigerado);
+                    // Luego, llama a Aplicacion.actualizarProductoRefrigerado pasando todos los parámetros.
+                    bandera = Aplicacion.actualizarProductoRefrigerado(productoSeleccionado.getCodigo(), codigo, nombre,
+                            valorUnitario, Integer.parseInt(cantidadExistente), Integer.parseInt(codigoAprobacion),
+                            Float.parseFloat(temperaturaRefrigerado));
 
-                if (bandera == true) {
+                if (bandera) {
 
                     tblProductos.refresh();
-                    mostrarMensaje("Notificacion Producto", "Producto Actualizado",
-                            "El producto se ha Actualizado con exito.", AlertType.INFORMATION);
+                    mostrarMensaje("Notificación Producto", "Producto Actualizado",
+                            "El producto se ha actualizado con éxito.", AlertType.INFORMATION);
 
                 } else {
-                    mostrarMensaje("Notificacion Producto", "Producto No Actualizado",
-                            "El producto N0 se ha Actualizado.", AlertType.ERROR);
+                    mostrarMensaje("Notificación Producto", "Producto No Actualizado",
+                            "El producto no se ha actualizado.", AlertType.ERROR);
                 }
 
             } else {
-                mostrarMensaje("Notificacion cliente", "Cliente No Seleccionado", "El cliente No ha sido seleccionado.",
+                mostrarMensaje("Notificación cliente", "Cliente No Seleccionado", "El cliente no ha sido seleccionado.",
                         AlertType.ERROR);
             }
         }
     }
-
+}
     public void eliminarProducto() {
 
-        if (rdoProductoPerecedero.isSelected()) {
+        if (rdoProcesado.isSelected()) {
 
             boolean bandera = false;
 
             if (productoSeleccionado != null) {
-                if (mostrarMensajeConfirmacion("�Esta seguro de eliminar el producto?") == true) {
+                if (mostrarMensajeConfirmacion("¿Está seguro de eliminar el producto?") == true) {
 
-                    bandera = aplicacion.eliminarProductoPerecedero(productoSeleccionado.getCodigo());
-                    if (bandera == true) {
-                        listaProductoData.remove(productoSeleccionado);
+                    bandera = Aplicacion.eliminarProductoProcesado(productoSeleccionado.getCodigo());
+                    if (bandera) {
+                        listaProductosData.remove(productoSeleccionado);
                         productoSeleccionado = null;
                         tblProductos.getSelectionModel().clearSelection();
-                        mostrarMensaje("Notificacion Producto", "Producto Eliminado",
-                                "El Producto se ha Eliminado con exito.", AlertType.INFORMATION);
+                        mostrarMensaje("Notificación Producto", "Producto Eliminado",
+                                "El Producto se ha eliminado con éxito.", AlertType.INFORMATION);
                     } else {
-                        mostrarMensaje("Notificacion Producto", "Producto No Eliminado",
-                                "El Producto No se ha Eliminado.", AlertType.ERROR);
+                        mostrarMensaje("Notificación Producto", "Producto No Eliminado",
+                                "El Producto no se ha eliminado.", AlertType.ERROR);
                     }
                 }
             } else {
-                mostrarMensaje("Notificacion Producto", "Producto No Seleccionado",
-                        "El Producto No ha sido seleccionado.", AlertType.ERROR);
+                mostrarMensaje("Notificación Producto", "Producto No Seleccionado",
+                        "El Producto no ha sido seleccionado.", AlertType.ERROR);
             }
 
-        } else if (rdoProductoEnvasado.isSelected()) {
+        } else if (rdoEnvasado.isSelected()) {
             boolean bandera = false;
 
             if (productoSeleccionado != null) {
-                if (mostrarMensajeConfirmacion("Esta seguro de eliminar el Producto?") == true) {
+                if (mostrarMensajeConfirmacion("¿Está seguro de eliminar el Producto?") == true) {
 
-                    bandera = aplicacion.eliminarProductoEnvasado(productoSeleccionado.getCodigo());
-                    if (bandera == true) {
-                        listaProductoData.remove(productoSeleccionado);
+                    bandera = Aplicacion.eliminarProductoEnvasado(productoSeleccionado.getCodigo());
+                    if (bandera) {
+                        listaProductosData.remove(productoSeleccionado);
                         productoSeleccionado = null;
                         tblProductos.getSelectionModel().clearSelection();
-                        mostrarMensaje("Notificacion Producto", "Cliente Producto",
-                                "El Producto se ha Eliminado con exito.", AlertType.INFORMATION);
+                        mostrarMensaje("Notificación Producto", "Cliente Producto",
+                                "El Producto se ha eliminado con éxito.", AlertType.INFORMATION);
                     } else {
-                        mostrarMensaje("Notificacion Producto", "Cliente No Eliminado",
-                                "El Producto No se ha Eliminado.", AlertType.ERROR);
+                        mostrarMensaje("Notificación Producto", "Cliente No Eliminado",
+                                "El Producto no se ha eliminado.", AlertType.ERROR);
                     }
                 }
             } else {
-                mostrarMensaje("Notificacion Producto", "Producto No Seleccionado",
-                        "El Producto No ha sido seleccionado.", AlertType.ERROR);
+                mostrarMensaje("Notificación Producto", "Producto No Seleccionado",
+                        "El Producto no ha sido seleccionado.", AlertType.ERROR);
             }
 
-        } else if (rdoProductoRefrigerado.isSelected()) {
+        } else if (rdoRefigerado.isSelected()) {
             boolean bandera = false;
 
             if (productoSeleccionado != null) {
-                if (mostrarMensajeConfirmacion("Esta seguro de eliminar el Producto?") == true) {
+                if (mostrarMensajeConfirmacion("¿Está seguro de eliminar el Producto?") == true) {
 
-                    bandera = aplicacion.eliminarProductoRefrigerado(productoSeleccionado.getCodigo());
-                    if (bandera == true) {
-                        listaProductoData.remove(productoSeleccionado);
+                    bandera = Aplicacion.eliminarProductoRefrigerado(productoSeleccionado.getCodigo());
+                    if (bandera) {
+                        listaProductosData.remove(productoSeleccionado);
                         productoSeleccionado = null;
                         tblProductos.getSelectionModel().clearSelection();
-                        mostrarMensaje("Notificacion Producto", "Cliente Producto",
-                                "El Producto se ha Eliminado con exito.", AlertType.INFORMATION);
+                        mostrarMensaje("Notificación Producto", "Cliente Producto",
+                                "El Producto se ha eliminado con éxito.", AlertType.INFORMATION);
                     } else {
-                        mostrarMensaje("Notificacion Producto", "Cliente No Eliminado",
-                                "El Producto No se ha Eliminado.", AlertType.ERROR);
+                        mostrarMensaje("Notificación Producto", "Cliente No Eliminado",
+                                "El Producto no se ha eliminado.", AlertType.ERROR);
                     }
                 }
             } else {
-                mostrarMensaje("Notificacion Producto", "Producto No Seleccionado",
-                        "El Producto No ha sido seleccionado.", AlertType.ERROR);
+                mostrarMensaje("Notificación Producto", "Producto No Seleccionado",
+                        "El Producto no ha sido seleccionado.", AlertType.ERROR);
             }
         }
     }
-
     public void limpiarCamposProductos() {
         txtCodigoProducto.setText("");
         txtNombreProducto.setText("");
@@ -466,7 +491,32 @@ public class ControladorProducto implements Initializable {
 
     }
 
+    private void mostrarMensaje(String titulo, String header, String contenido, AlertType alertType) {
 
+        Alert alert = new Alert(alertType);
+
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+
+    }
+
+    private boolean mostrarMensajeConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmaci�n");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        Optional<ButtonType> action = alert.showAndWait();
+
+        if (action.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
 
 
     private void handleEnvasadoSelected(ActionEvent actionEvent) {

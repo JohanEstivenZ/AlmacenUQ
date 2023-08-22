@@ -46,19 +46,19 @@ public class ControladorProducto implements Initializable {
     private DatePicker dateFechaVencimiento;
     @FXML
     private Label labelFechaVencimineto;
-    @FXML
-    private RadioButton RdoEnvasado;
-    @FXML
-    private RadioButton RdoRefigerado;
-    @FXML
-    private RadioButton RdoProcesado;
     private ToggleGroup radioButtonGroup;
     @FXML
-    private Label lavelFechaEnvasado1;
+    private Label lavelFechaEnvasado;
     @FXML
-    private Label lavelPesoEnvase1;
+    private Label lavelPesoEnvase;
     @FXML
-    private Label lavelPaisOrigen1;
+    private Label lavelPaisOrigen;
+    @FXML
+    private RadioButton rdoEnvasado;
+    @FXML
+    private RadioButton rdoRefigerado;
+    @FXML
+    private RadioButton rdoProcesado;
 
 
     @Override
@@ -78,14 +78,14 @@ public class ControladorProducto implements Initializable {
         comboBoxPaisProducto.setVisible(false);
 
         radioButtonGroup = new ToggleGroup();
-        RdoEnvasado.setToggleGroup(radioButtonGroup);
-        RdoRefigerado.setToggleGroup(radioButtonGroup);
-        RdoProcesado.setToggleGroup(radioButtonGroup);
+        rdoEnvasado.setToggleGroup(radioButtonGroup);
+        rdoRefigerado.setToggleGroup(radioButtonGroup);
+        rdoProcesado.setToggleGroup(radioButtonGroup);
 
 
-        RdoEnvasado.setOnAction(this::handleEnvasadoSelected);
-        RdoProcesado.setOnAction(this::handleEnvasadoSelected);
-        RdoRefigerado.setOnAction(this::handleEnvasadoSelected);
+        rdoEnvasado.setOnAction(this::handleEnvasadoSelected);
+        rdoProcesado.setOnAction(this::handleEnvasadoSelected);
+        rdoRefigerado.setOnAction(this::handleEnvasadoSelected);
 
 
     }
@@ -470,9 +470,9 @@ public class ControladorProducto implements Initializable {
 
 
     private void handleEnvasadoSelected(ActionEvent actionEvent) {
-        boolean isEnvasadoSelected = RdoEnvasado.isSelected();
-        boolean isProcesadoSelected = RdoProcesado.isSelected();
-        boolean isRefigeradoSelected = RdoRefigerado.isSelected();
+        boolean isEnvasadoSelected = rdoEnvasado.isSelected();
+        boolean isProcesadoSelected = rdoProcesado.isSelected();
+        boolean isRefigeradoSelected = rdoRefigerado.isSelected();
 
         RadioButton selectedRadioButton = (RadioButton) radioButtonGroup.getSelectedToggle();
 

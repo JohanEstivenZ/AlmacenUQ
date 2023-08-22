@@ -1,6 +1,8 @@
 package Controlador;
 
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -8,8 +10,6 @@ import java.util.ResourceBundle;
 public class ControladorVentas implements Initializable {
 
 
-    @javafx.fxml.FXML
-    private Label txtTotalVenta;
     @javafx.fxml.FXML
     private Label lavelFechaEnvasado;
     @javafx.fxml.FXML

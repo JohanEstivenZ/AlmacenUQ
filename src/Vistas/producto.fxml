@@ -88,12 +88,12 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lavelFechaEnvasado1" prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
+                  <Label fx:id="lavelFechaEnvasado" prefHeight="18.0" prefWidth="176.0" text="Fecha de envasado" textFill="WHITE" GridPane.rowIndex="6">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="lavelPesoEnvase1" prefHeight="18.0" prefWidth="176.0" text="Peso del envase" textFill="WHITE" GridPane.rowIndex="7">
+                  <Label fx:id="lavelPesoEnvase" prefHeight="18.0" prefWidth="176.0" text="Peso del envase" textFill="WHITE" GridPane.rowIndex="7">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
@@ -123,7 +123,7 @@
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="lavelPaisOrigen1" prefHeight="18.0" prefWidth="176.0" text="Pais de origen" textFill="WHITE" GridPane.rowIndex="8">
+                  <Label fx:id="lavelPaisOrigen" prefHeight="18.0" prefWidth="176.0" text="Pais de origen" textFill="WHITE" GridPane.rowIndex="8">
                      <font>
                         <Font name="Arial Rounded MT Bold" size="13.0" />
                      </font>

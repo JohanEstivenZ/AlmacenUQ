@@ -119,8 +119,8 @@ public class Aplicacion extends Application {
 
     // ----------------------------- PRODUCTO PROCESADO -------------------
 
-    public ProductoProcesado crearProductoProcesado(String codigo, String nombre,
-                                                    double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
+    public static ProductoProcesado crearProductoProcesado(String codigo, String nombre,
+                                                           double valorUnitario, int cantidadExistencia, Date fechaVencimiento) {
 
         ProductoProcesado proProcs = Almacen.crearProductoProcesado(codigo, nombre, valorUnitario, cantidadExistencia,
                 fechaVencimiento);

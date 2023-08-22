@@ -24,10 +24,7 @@ public class ControladorCliente implements Initializable {
     private ObservableList<ClienteNatural> listaClienteNaturalData = FXCollections.observableArrayList();
     private ObservableList<ClienteJuridico> listaClienteJuridicoData = FXCollections.observableArrayList();
 
-    private ObservableList<ProductoProcesado> listaProductoProcesado = FXCollections.observableArrayList();
-    private ObservableList<ProductoEnvasado> listaProductoEnvasado = FXCollections.observableArrayList();
-    private ObservableList<ProductoRefrigerado> listaProductoRefrigerado = FXCollections.observableArrayList();
-    private ObservableList<Producto> listaProductoData = FXCollections.observableArrayList();
+
     private ObservableList<Producto> productosVendidos = FXCollections.observableArrayList();
 
     private ClienteNatural clientenaturalSeleccionado;
@@ -522,37 +519,6 @@ public class ControladorCliente implements Initializable {
         this.listaClienteData = listaClienteData;
     }
 
-    public ObservableList<ProductoProcesado> getListaProductoProcesado() {
-        return listaProductoProcesado;
-    }
-
-    public void setListaProductoProcesado(ObservableList<ProductoProcesado> listaProductoProcesado) {
-        this.listaProductoProcesado = listaProductoProcesado;
-    }
-
-    public ObservableList<ProductoEnvasado> getListaProductoEnvasado() {
-        return listaProductoEnvasado;
-    }
-
-    public void setListaProductoEnvasado(ObservableList<ProductoEnvasado> listaProductoEnvasado) {
-        this.listaProductoEnvasado = listaProductoEnvasado;
-    }
-
-    public ObservableList<ProductoRefrigerado> getListaProductoRefrigerado() {
-        return listaProductoRefrigerado;
-    }
-
-    public void setListaProductoRefrigerado(ObservableList<ProductoRefrigerado> listaProductoRefrigerado) {
-        this.listaProductoRefrigerado = listaProductoRefrigerado;
-    }
-
-    public ObservableList<Producto> getListaProductoData() {
-        return listaProductoData;
-    }
-
-    public void setListaProductoData(ObservableList<Producto> listaProductoData) {
-        this.listaProductoData = listaProductoData;
-    }
 
     public ObservableList<Producto> getProductosVendidos() {
         return productosVendidos;

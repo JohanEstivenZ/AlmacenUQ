@@ -79,6 +79,14 @@ public class ControladorProducto implements Initializable {
     private Producto productoSeleccionado;
     @FXML
     private TableView tblProductos;
+    @FXML
+    private Button btnGuardarProducto;
+    @FXML
+    private Button btnLimpiarProducto;
+    @FXML
+    private Button btnActualizarProducto;
+    @FXML
+    private Button btnEliminarProducto;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -572,6 +580,26 @@ public class ControladorProducto implements Initializable {
 
 
         }
+    }
+
+    @FXML
+    public void guardarCliente(ActionEvent actionEvent) {
+        agregarProducto();
+    }
+
+    @FXML
+    public void limpiarProductos(ActionEvent actionEvent) {
+        limpiarCamposProductos();
+    }
+
+    @FXML
+    public void actualizarProductos(ActionEvent actionEvent) {
+        actualizarProducto();
+    }
+
+    @FXML
+    public void eliminarProducto(ActionEvent actionEvent) {
+        eliminarProducto();
     }
 }
 

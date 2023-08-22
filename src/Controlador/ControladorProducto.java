@@ -1,9 +1,4 @@
 package Controlador;
-import Modelos.Producto;
-import Modelos.ProductoEnvasado;
-import Modelos.ProductoProcesado;
-import Modelos.ProductoRefrigerado;
-import application.Aplicacion;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
@@ -20,9 +15,6 @@ import javafx.scene.layout.VBox;
 
 
 import java.net.URL;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class ControladorProducto implements Initializable {
@@ -53,25 +45,21 @@ public class ControladorProducto implements Initializable {
     @javafx.fxml.FXML
     private DatePicker dateFechaVencimiento;
     @FXML
-    private Label lavelFechaEnvasado;
-    @FXML
     private Label labelFechaVencimineto;
     @FXML
-    private Label lavelPesoEnvase;
+    private RadioButton RdoEnvasado;
     @FXML
-    private Label lavelPaisOrigen;
+    private RadioButton RdoRefigerado;
+    @FXML
+    private RadioButton RdoProcesado;
     private ToggleGroup radioButtonGroup;
     @FXML
-    private RadioButton rdoEnvasado;
+    private Label lavelFechaEnvasado1;
     @FXML
-    private RadioButton rdoRefigerado;
+    private Label lavelPesoEnvase1;
     @FXML
-    private RadioButton rdoProcesado;
+    private Label lavelPaisOrigen1;
 
-    private ObservableList<ProductoProcesado> listaProductoProcesado = FXCollections.observableArrayList();
-    private ObservableList<ProductoEnvasado> listaProductoEnvasado = FXCollections.observableArrayList();
-    private ObservableList<ProductoRefrigerado> listaProductoRefrigerado = FXCollections.observableArrayList();
-    private ObservableList<Producto> listaProductoData = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,17 +78,18 @@ public class ControladorProducto implements Initializable {
         comboBoxPaisProducto.setVisible(false);
 
         radioButtonGroup = new ToggleGroup();
-        rdoEnvasado.setToggleGroup(radioButtonGroup);
-        rdoRefigerado.setToggleGroup(radioButtonGroup);
-        rdoProcesado.setToggleGroup(radioButtonGroup);
+        RdoEnvasado.setToggleGroup(radioButtonGroup);
+        RdoRefigerado.setToggleGroup(radioButtonGroup);
+        RdoProcesado.setToggleGroup(radioButtonGroup);
 
 
-        rdoEnvasado.setOnAction(this::handleEnvasadoSelected);
-        rdoProcesado.setOnAction(this::handleEnvasadoSelected);
-        rdoRefigerado.setOnAction(this::handleEnvasadoSelected);
+        RdoEnvasado.setOnAction(this::handleEnvasadoSelected);
+        RdoProcesado.setOnAction(this::handleEnvasadoSelected);
+        RdoRefigerado.setOnAction(this::handleEnvasadoSelected);
 
 
     }
+
 
     public void agregarProducto() {
 
@@ -479,10 +468,11 @@ public class ControladorProducto implements Initializable {
 
 
 
+
     private void handleEnvasadoSelected(ActionEvent actionEvent) {
-        boolean isEnvasadoSelected = rdoEnvasado.isSelected();
-        boolean isProcesadoSelected = rdoProcesado.isSelected();
-        boolean isRefigeradoSelected = rdoRefigerado.isSelected();
+        boolean isEnvasadoSelected = RdoEnvasado.isSelected();
+        boolean isProcesadoSelected = RdoProcesado.isSelected();
+        boolean isRefigeradoSelected = RdoRefigerado.isSelected();
 
         RadioButton selectedRadioButton = (RadioButton) radioButtonGroup.getSelectedToggle();
 

@@ -84,22 +84,68 @@ public class ControladorProducto implements Initializable {
 
 
         RdoEnvasado.setOnAction(this::handleEnvasadoSelected);
-
+        RdoProcesado.setOnAction(this::handleEnvasadoSelected);
+        RdoRefigerado.setOnAction(this::handleEnvasadoSelected);
 
 
     }
 
     private void handleEnvasadoSelected(ActionEvent actionEvent) {
-        boolean isSelected = RdoEnvasado.isSelected();
-        // Mostrar u ocultar las opciones relacionadas con el cliente natural según la selección
-        lavelFechaEnvasado.setVisible(isSelected);
-        lavelPesoEnvase.setVisible(isSelected);
-        lavelPaisOrigen.setVisible(isSelected);
-        dateFechaEnvasado.setVisible(isSelected);
-        txtPesoEnvaseProducto.setVisible(isSelected);
-        comboBoxPaisProducto.setVisible(isSelected);
-    }
+        boolean isEnvasadoSelected = RdoEnvasado.isSelected();
+        boolean isProcesadoSelected = RdoProcesado.isSelected();
+        boolean isRefigeradoSelected = RdoRefigerado.isSelected();
 
+        RadioButton selectedRadioButton = (RadioButton) radioButtonGroup.getSelectedToggle();
+
+        if (selectedRadioButton != null) {
+            String selectedLabel = selectedRadioButton.getText();
+
+            if (selectedLabel.equals("Envasado")) {
+                lavelFechaEnvasado.setVisible(isEnvasadoSelected);
+                lavelPesoEnvase.setVisible(isEnvasadoSelected);
+                lavelPaisOrigen.setVisible(isEnvasadoSelected);
+                dateFechaEnvasado.setVisible(isEnvasadoSelected);
+                txtPesoEnvaseProducto.setVisible(isEnvasadoSelected);
+                comboBoxPaisProducto.setVisible(isEnvasadoSelected);
+                labelCodigoAprovacion.setVisible(false);
+                txtCodigoAprovacionProducto.setVisible(false);
+                labelTemperatura.setVisible(false);
+                txtTemperaturaRefigeramientoProducto.setVisible(false);
+                dateFechaVencimiento.setVisible(false);
+                labelFechaVencimineto.setVisible(false);
+            } else if (selectedLabel.equals("Refrigerado")) {
+                labelCodigoAprovacion.setVisible(isRefigeradoSelected);
+                txtCodigoAprovacionProducto.setVisible(isRefigeradoSelected);
+                labelTemperatura.setVisible(isRefigeradoSelected);
+                txtTemperaturaRefigeramientoProducto.setVisible(isRefigeradoSelected);
+                lavelFechaEnvasado.setVisible(false);
+                lavelPesoEnvase.setVisible(false);
+                lavelPaisOrigen.setVisible(false);
+                dateFechaEnvasado.setVisible(false);
+                txtPesoEnvaseProducto.setVisible(false);
+                comboBoxPaisProducto.setVisible(false);
+                dateFechaVencimiento.setVisible(false);
+                labelFechaVencimineto.setVisible(false);
+            } else if (selectedLabel.equals("Procesado")) {
+                dateFechaVencimiento.setVisible(isProcesadoSelected);
+                labelFechaVencimineto.setVisible(isProcesadoSelected);
+                labelCodigoAprovacion.setVisible(false);
+                txtCodigoAprovacionProducto.setVisible(false);
+                labelTemperatura.setVisible(false);
+                txtTemperaturaRefigeramientoProducto.setVisible(false);
+                lavelFechaEnvasado.setVisible(false);
+                lavelPesoEnvase.setVisible(false);
+                lavelPaisOrigen.setVisible(false);
+                dateFechaEnvasado.setVisible(false);
+                txtPesoEnvaseProducto.setVisible(false);
+                comboBoxPaisProducto.setVisible(false);
+            }
+
+
+        }
+    }
 }
+
+
 
 

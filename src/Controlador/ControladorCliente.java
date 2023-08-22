@@ -1,5 +1,5 @@
-package Controlador;
 
+package Controlador;
 
 import Modelos.*;
 import application.Aplicacion;
@@ -13,21 +13,18 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.Alert.AlertType;
 
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class ControladorCliente implements Initializable {
     private ObservableList<ClienteNatural> listaClienteNaturalData = FXCollections.observableArrayList();
     private ObservableList<ClienteJuridico> listaClienteJuridicoData = FXCollections.observableArrayList();
-    private ObservableList<Cliente> listaClienteData = FXCollections.observableArrayList();
-    private ObservableList<ProductoProcesado> listaProductoProcesado = FXCollections.observableArrayList();
-    private ObservableList<ProductoEnvasado> listaProductoEnvasado = FXCollections.observableArrayList();
-    private ObservableList<ProductoRefrigerado> listaProductoRefrigerado = FXCollections.observableArrayList();
-    private ObservableList<Producto> listaProductoData = FXCollections.observableArrayList();
+
+
     private ObservableList<Producto> productosVendidos = FXCollections.observableArrayList();
 
     private ClienteNatural clientenaturalSeleccionado;
@@ -57,20 +54,7 @@ public class ControladorCliente implements Initializable {
     private Button btnSalirCliente;
     @FXML
     private Button btnEliminarCliente;
-    @FXML
-    private TableColumn <?, ?>columnNombreCliente;
-    @FXML
-    private TableColumn <?, ?>columnApellidoCliente;
-    @FXML
-    private TableColumn <?, ?>columnIdCliente;
-    @FXML
-    private TableColumn <?, ?>columnTelefonoCliente;
-    @FXML
-    private TableColumn <?, ?>columnDireccionCliente;
-    @FXML
-    private TableColumn <?, ?>columnCorrreoCliente;
-    @FXML
-    private TableColumn <?, ?>columnFNacimientoCliente;
+
     @FXML
     private Button btnActualizarCliente;
     @FXML
@@ -79,10 +63,30 @@ public class ControladorCliente implements Initializable {
     private RadioButton rdoClienteNatural;
     @FXML
     private RadioButton rdoClienteJuridico;
+
+
     @FXML
     private TableView tblCliente;
     @FXML
+    private TableColumn columnNombreCliente;
+    @FXML
+    private TableColumn columnApellidoCliente;
+    @FXML
+    private TableColumn columnIdCliente;
+    @FXML
+    private TableColumn columnTelefonoCliente;
+    @FXML
+    private TableColumn columnDireccionCliente;
+    @FXML
+    private TableColumn columnCorreoCliente;
+    @FXML
+    private TableColumn columnFNacimientoCliente;
+    @FXML
     private TableColumn columnNitCliente;
+
+    private ObservableList<Cliente> listaClienteData ;
+
+
     private ToggleGroup radioButtonGroup;
     @FXML
     private Label labelCorreo;
@@ -91,8 +95,14 @@ public class ControladorCliente implements Initializable {
     @FXML
     private Label labelNit;
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // Inicializa listaClienteData con la instancia correcta
+        listaClienteData = FXCollections.observableArrayList();
+
+        // Agregar clientes a listaClienteData, por ejemplo:
+        listaClienteData.addAll(Aplicacion.obtenerListaClientes());
 
         labelCorreo.setVisible(false);
         txtCorreoCliente.setVisible(false);
@@ -110,19 +120,24 @@ public class ControladorCliente implements Initializable {
 
         this.columnNombreCliente.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
         this.columnApellidoCliente.setCellValueFactory(new PropertyValueFactory<>("Apellido"));
-        this.columnIdCliente.setCellValueFactory(new PropertyValueFactory<>("Indentificacion"));
+        this.columnIdCliente.setCellValueFactory(new PropertyValueFactory<>("Identificacion"));
         this.columnDireccionCliente.setCellValueFactory(new PropertyValueFactory<>("Direccion"));
         this.columnTelefonoCliente.setCellValueFactory(new PropertyValueFactory<>("Telefono"));
         this.columnNitCliente.setCellValueFactory(new PropertyValueFactory<>("Nit"));
-        tblCliente.setItems(listaClienteData);
+        this.columnCorreoCliente.setCellValueFactory(new PropertyValueFactory<>("Correo"));
+        this.columnFNacimientoCliente.setCellValueFactory(new PropertyValueFactory<>("Fecha Nacimiento"));
+
+        tblCliente.setItems(listaClienteData); // Configura la tabla para usar la lista de datos
 
         tblCliente.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
-
             clienteSeleccionado = (Cliente) newSelection;
             mostrarInformacionCliente();
-
         });
+    }
 
+    private void agregarClienteATabla(Cliente cliente) {
+        listaClienteData.add(cliente);
+        tblCliente.refresh();
     }
 
     private void handleEnvasadoSelected(ActionEvent actionEvent) {
@@ -217,16 +232,14 @@ public class ControladorCliente implements Initializable {
                 ClienteNatural cNatural = null;
 
                 cNatural = Aplicacion.crearClienteNatural(nombre, apellido, id, direccion, telefono, correo, fechaUtil);
-
                 if (cNatural != null) {
 
-                    listaClienteData.add(cNatural);
+                    agregarClienteATabla(cNatural);
                     limpiarCamposCliente();
-                    mostrarMensaje("Notificacion cliente", "Cliente registrado",
-                            "El cliente se ha registrado con exito.", AlertType.INFORMATION);
+
                 } else {
                     String mensaje = "El cliente con documento: " + id + " Ya existe";
-                    mostrarMensaje("Notificacion cliente", "Cliente No registrado", mensaje, AlertType.ERROR);
+
                 }
 
             }
@@ -241,31 +254,30 @@ public class ControladorCliente implements Initializable {
 
 
             if (validarDatosJuridico(nombre, apellido, id, direccion, telefono, nit)) {
-                ClienteJuridico cJuridica = null;
+                ClienteJuridico cJuridico = null;
 
-                cJuridica = Aplicacion.crearClienteJuridico(nombre, apellido, id, direccion, telefono, nit);
+                cJuridico = Aplicacion.crearClienteJuridico(nombre, apellido, id, direccion, telefono, nit);
 
-                if (cJuridica != null) {
+                if (cJuridico != null) {
+                    agregarClienteATabla(cJuridico);
 
-                    listaClienteData.add(cJuridica);
                     limpiarCamposCliente();
-                    mostrarMensaje("Notificacion cliente", "Cliente registrado",
-                            "El cliente se ha registrado con exito.", AlertType.INFORMATION);
+
 
                 } else {
                     String mensaje = "El cliente con documento: " + nit + " Ya existe";
-                    mostrarMensaje("Notificaci�n cliente", "Cliente No registrado", mensaje, AlertType.ERROR);
+
                 }
 
             }
         } else {
 
-            mostrarMensaje("Notificaci�n cliente", "seleccione un tipo de cliente", "Seleccione un tipo de persona",
+            mostrarMensaje("Notificacion cliente", "seleccione un tipo de cliente", "Seleccione un tipo de persona",
                     AlertType.ERROR);
         }
     }
 
-    private boolean validarDatosNatural(String nombre, String apellido, String id, String correo, String direccion, String telefono, Date fechaNacimiento) {
+    private boolean validarDatosNatural(String nombre, String apellido, String id, String direccion, String telefono, String correo, Date fechaNacimiento) {
         String mensaje = "";
 
 
@@ -341,6 +353,145 @@ public class ControladorCliente implements Initializable {
 
     }
 
+    public void actualizarCliente() {
+
+        if (rdoClienteNatural.isSelected()) {
+            String nombre = txtNombreCliente.getText();
+            String apellido = txtApellidoCliente.getText();
+            String id = txtIdCliente.getText();
+            String direccion = txtDireccionCliente.getText();
+            String telefono = txtTelefonoCliente.getText();
+            String correo = txtCorreoCliente.getText();
+            LocalDate fechaNacimiento = dateFechaNacimiento.getValue();
+            Date fechaUtil = Date.from(fechaNacimiento.atStartOfDay(ZoneId.systemDefault()).toInstant());
+
+
+            boolean bandera = false;
+
+            if (clienteSeleccionado != null) {
+                if (validarDatosNatural(nombre, apellido, id, direccion, telefono, correo, fechaUtil))
+
+                    bandera = Aplicacion.actualizarClienteNatural(clienteSeleccionado.getId(), nombre,
+                            apellido, id, direccion, telefono, correo, fechaUtil);
+                if (bandera == true) {
+
+                    tblCliente.refresh();
+                    mostrarMensaje("Notificacion cliente", "Cliente Actualizado",
+                            "El cliente se ha Actualizado con exito.", AlertType.INFORMATION);
+
+                } else {
+                    mostrarMensaje("Notificacion cliente", "Cliente No Actualizado", "El cliente No se ha Actualizado.",
+                            AlertType.ERROR);
+                }
+            } else {
+                mostrarMensaje("Notificacion cliente", "Cliente No Seleccionado", "El cliente No ha sido seleccionado.",
+                        AlertType.ERROR);
+            }
+        } else if (rdoClienteJuridico.isSelected()) {
+            String nombre = txtNombreCliente.getText();
+            String apellido = txtApellidoCliente.getText();
+            String id = txtIdCliente.getText();
+            String direccion = txtDireccionCliente.getText();
+            String telefono = txtTelefonoCliente.getText();
+            String nit = txtNitCliente.getText();
+
+            boolean bandera = false;
+
+            if (clienteSeleccionado != null) {
+
+                if (validarDatosJuridico(nombre, apellido, id, direccion, telefono, nit)) {
+
+                    bandera = Aplicacion.actualizarClienteJuridico(clienteSeleccionado.getId(), nombre,
+                            apellido, id, direccion, telefono, nit);
+
+                    if (bandera == true) {
+
+                        tblCliente.refresh();
+                        mostrarMensaje("Notificacion cliente", "Cliente Actualizado",
+                                "El cliente se ha Actualizado con exito.", AlertType.INFORMATION);
+
+                    } else {
+                        mostrarMensaje("Notificacion cliente", "Cliente No Actualizado",
+                                "El cliente No se ha Actualizado.", AlertType.ERROR);
+                    }
+
+                }
+
+            } else {
+                mostrarMensaje("Notificacion cliente", "Cliente No Seleccionado", "El cliente No ha sido seleccionado.",
+                        AlertType.ERROR);
+            }
+        }
+
+    }
+
+    public void eliminarCliente() {
+
+        if (rdoClienteNatural.isSelected()) {
+
+            boolean bandera = false;
+
+            if (clienteSeleccionado != null) {
+                if (mostrarMensajeConfirmacion("¿Esta seguro de eliminar el cliente?") == true) {
+
+                    bandera = Aplicacion.eliminarClienteNatural(clienteSeleccionado.getId());
+                    if (bandera == true) {
+                        listaClienteData.remove(clienteSeleccionado);
+                        clienteSeleccionado = null;
+                        tblCliente.getSelectionModel().clearSelection();
+                        mostrarMensaje("Notificacion cliente", "Cliente Eliminado",
+                                "El cliente se ha Eliminado con exito.", AlertType.INFORMATION);
+                    } else {
+                        mostrarMensaje("Notificacion cliente", "Cliente No Eliminado", "El cliente No se ha Eliminado.",
+                                AlertType.ERROR);
+                    }
+                }
+            } else {
+                mostrarMensaje("Notificacion cliente", "Cliente No Seleccionado", "El cliente No ha sido seleccionado.",
+                        AlertType.ERROR);
+            }
+
+        } else if (rdoClienteJuridico.isSelected()) {
+            boolean bandera = false;
+
+            if (clienteSeleccionado != null) {
+                if (mostrarMensajeConfirmacion("¿Esta seguro de eliminar el cliente?") == true) {
+
+                    bandera = Aplicacion.eliminarClienteJuridico(clienteSeleccionado.getId());
+                    if (bandera == true) {
+                        listaClienteData.remove(clienteSeleccionado);
+                        clienteSeleccionado = null;
+                        tblCliente.getSelectionModel().clearSelection();
+                        mostrarMensaje("Notificacion cliente", "Cliente Eliminado",
+                                "El cliente se ha Eliminado con exito.", AlertType.INFORMATION);
+                    } else {
+                        mostrarMensaje("Notificacion cliente", "Cliente No Eliminado", "El cliente No se ha Eliminado.",
+                                AlertType.ERROR);
+                    }
+                }
+            } else {
+                mostrarMensaje("Notificacion cliente", "Cliente No Seleccionado", "El cliente No ha sido seleccionado.",
+                        AlertType.ERROR);
+            }
+
+        }
+    }
+
+    private boolean mostrarMensajeConfirmacion(String mensaje) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        Optional<ButtonType> action = alert.showAndWait();
+
+        if (action.get() == ButtonType.OK) {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
     public ObservableList<ClienteNatural> getListaClienteNaturalData() {
         listaClienteNaturalData.addAll(Aplicacion.obtenerListaClientesNaturales());
         return listaClienteNaturalData;
@@ -360,6 +511,7 @@ public class ControladorCliente implements Initializable {
     }
 
     public ObservableList<Cliente> getListaClienteData() {
+        listaClienteData.addAll(Aplicacion.obtenerListaClientes());
         return listaClienteData;
     }
 
@@ -367,37 +519,6 @@ public class ControladorCliente implements Initializable {
         this.listaClienteData = listaClienteData;
     }
 
-    public ObservableList<ProductoProcesado> getListaProductoProcesado() {
-        return listaProductoProcesado;
-    }
-
-    public void setListaProductoProcesado(ObservableList<ProductoProcesado> listaProductoProcesado) {
-        this.listaProductoProcesado = listaProductoProcesado;
-    }
-
-    public ObservableList<ProductoEnvasado> getListaProductoEnvasado() {
-        return listaProductoEnvasado;
-    }
-
-    public void setListaProductoEnvasado(ObservableList<ProductoEnvasado> listaProductoEnvasado) {
-        this.listaProductoEnvasado = listaProductoEnvasado;
-    }
-
-    public ObservableList<ProductoRefrigerado> getListaProductoRefrigerado() {
-        return listaProductoRefrigerado;
-    }
-
-    public void setListaProductoRefrigerado(ObservableList<ProductoRefrigerado> listaProductoRefrigerado) {
-        this.listaProductoRefrigerado = listaProductoRefrigerado;
-    }
-
-    public ObservableList<Producto> getListaProductoData() {
-        return listaProductoData;
-    }
-
-    public void setListaProductoData(ObservableList<Producto> listaProductoData) {
-        this.listaProductoData = listaProductoData;
-    }
 
     public ObservableList<Producto> getProductosVendidos() {
         return productosVendidos;
@@ -406,4 +527,5 @@ public class ControladorCliente implements Initializable {
     public void setProductosVendidos(ObservableList<Producto> productosVendidos) {
         this.productosVendidos = productosVendidos;
     }
+
 }

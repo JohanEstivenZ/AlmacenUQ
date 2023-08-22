@@ -41,4 +41,10 @@ public class ControladorVentas implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+    public void seleccionarCliente () {
+
+    }
+    public void vender () {
+
+    }
 }

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="924.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controlador.ControladorDetalleVenta">
+   <children>
+      <AnchorPane prefHeight="500.0" prefWidth="282.0" style="-fx-background-color: #ffb340;">
+         <children>
+            <ImageView fitHeight="241.0" fitWidth="675.0" layoutX="22.0" layoutY="129.4" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="129.60000000000002" AnchorPane.topAnchor="129.4">
+               <image>
+                  <Image url="@../Imagenes/LOGO_2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="182.0" layoutY="-42.0" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+         <children>
+            <TableView fx:id="tbvwDetalle" layoutX="161.0" layoutY="125.0" prefHeight="254.0" prefWidth="520.0">
+               <columns>
+                  <TableColumn fx:id="columDetalleProducto" prefWidth="303.20001220703125" text="Producto" />
+                  <TableColumn fx:id="columDetalleCantidad" prefWidth="118.39993286132812" text="Cantidad Vendida" />
+                  <TableColumn fx:id="columDetalleSubtotal" prefWidth="92.79998779296875" text="Subtotal" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
